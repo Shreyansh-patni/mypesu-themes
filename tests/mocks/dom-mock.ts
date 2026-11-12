@@ -97,10 +97,12 @@ export class MockElement {
       }
       // Tag + Class (e.g. img.university-logo)
       if (target.includes('.')) {
-        const [tag, cls] = target.split('.');
+        // Support multiple classes (e.g. .info-contents.announcements)
+        const parts = target.split('.').filter(Boolean);
+        const tag = target.startsWith('.') ? '' : parts[0];
+        const classes = target.startsWith('.') ? parts : parts.slice(1);
         if (tag && el.tagName !== tag.toLowerCase()) return false;
-        if (cls) return el.classList.has(cls);
-        return false;
+        return classes.every((cls) => el.classList.has(cls));
       }
       // ID only
       if (target.startsWith('#')) {

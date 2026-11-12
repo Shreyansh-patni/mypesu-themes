@@ -9,19 +9,75 @@ export default defineContentScript({
   runAt: 'document_start',
   async main() {
     let currentPreferences: UserPreferences | null = null;
+    let spaObserver: MutationObserver | null = null;
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
     const runAdapterCycle = () => {
       if (!currentPreferences || typeof document === 'undefined') return;
       applyActiveAdapters(document, currentPreferences);
     };
 
-    // 1. Initial preference hydration
+    const debouncedAdapterCycle = () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        runAdapterCycle();
+      }, 50);
+    };
+
+    /**
+     * Initializes a narrowly-scoped MutationObserver on the SPA content root (#StudentProfilePESUContent)
+     * or document body to detect AJAX/SPA view transitions between Dashboard, Courses, etc.
+     * Observes strictly structural childList mutations without inspecting or processing academic text.
+     */
+    const setupSpaObserver = () => {
+      if (typeof MutationObserver === 'undefined' || typeof document === 'undefined') return;
+      if (spaObserver) {
+        spaObserver.disconnect();
+        spaObserver = null;
+      }
+
+      const targetRoot =
+        document.getElementById('StudentProfilePESUContent') ||
+        document.querySelector('.content-right-wrapper') ||
+        document.body;
+
+      if (!targetRoot) return;
+
+      spaObserver = new MutationObserver((mutations) => {
+        // Check if any structural child list changes occurred
+        let hasStructuralChange = false;
+        for (const mutation of mutations) {
+          if (mutation.type === 'childList' && (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0)) {
+            hasStructuralChange = true;
+            break;
+          }
+        }
+        if (hasStructuralChange) {
+          debouncedAdapterCycle();
+        }
+      });
+
+      spaObserver.observe(targetRoot, {
+        childList: true,
+        subtree: true,
+      });
+    };
+
+    // 1. Initial preference hydration & DOM lifecycle setup
     try {
       currentPreferences = await getPreferences();
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', runAdapterCycle, { once: true });
+        document.addEventListener(
+          'DOMContentLoaded',
+          () => {
+            runAdapterCycle();
+            setupSpaObserver();
+          },
+          { once: true }
+        );
       } else {
         runAdapterCycle();
+        setupSpaObserver();
       }
     } catch (err) {
       console.warn('[MyPESU Themes] Preference hydration failed. Remaining unstyled.', err);
