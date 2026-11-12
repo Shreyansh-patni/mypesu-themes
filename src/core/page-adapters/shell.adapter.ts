@@ -116,12 +116,75 @@ html[data-pas-theme="monochrome"] .content-right {
 /* 3. Scoped Sidebar Navigation Menu */
 html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu {
   background-color: var(--pas-surface) !important;
+  list-style: none !important;
+  padding: 8px 0 !important;
+  margin: 0 !important;
 }
 
-/* 4. Scoped Inner Content Canvas Wrapper */
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item {
+  background-color: transparent !important;
+  border: none !important;
+  transition: background-color 0.15s ease-in-out !important;
+}
+
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item > a {
+  color: var(--pas-text-muted) !important;
+  text-decoration: none !important;
+  display: block !important;
+  padding: 10px 16px !important;
+  font-family: var(--pas-font-family) !important;
+  font-size: 0.9em !important;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out !important;
+}
+
+/* Hover state on inactive navigation items */
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item:hover > a {
+  background-color: var(--pas-surface-raised) !important;
+  color: var(--pas-text) !important;
+}
+
+/* Active navigation item: strictly neutral monochrome (eliminates native blue active state) */
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item.active {
+  background-color: var(--pas-surface-raised) !important;
+  border-left: 3px solid var(--pas-accent) !important;
+}
+
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item.active > a {
+  color: var(--pas-text) !important;
+  font-weight: 600 !important;
+  background-color: transparent !important;
+}
+
+/* 4. Scoped Inner Content Canvas Wrapper & Scrollbar */
 html[data-pas-theme="monochrome"] .content-right .content-right-wrapper {
   background-color: var(--pas-canvas) !important;
   color: var(--pas-text) !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--pas-border) var(--pas-surface) !important;
+}
+
+/* WebKit scrollbar styling for scrollable content containers in Monochrome */
+html[data-pas-theme="monochrome"] .content-right-wrapper::-webkit-scrollbar,
+html[data-pas-theme="monochrome"] #StudentProfilePESUContent::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+html[data-pas-theme="monochrome"] .content-right-wrapper::-webkit-scrollbar-track,
+html[data-pas-theme="monochrome"] #StudentProfilePESUContent::-webkit-scrollbar-track {
+  background: var(--pas-surface) !important;
+}
+
+html[data-pas-theme="monochrome"] .content-right-wrapper::-webkit-scrollbar-thumb,
+html[data-pas-theme="monochrome"] #StudentProfilePESUContent::-webkit-scrollbar-thumb {
+  background: var(--pas-border) !important;
+  border-radius: 9999px !important;
+  border: 2px solid var(--pas-surface) !important;
+}
+
+html[data-pas-theme="monochrome"] .content-right-wrapper::-webkit-scrollbar-thumb:hover,
+html[data-pas-theme="monochrome"] #StudentProfilePESUContent::-webkit-scrollbar-thumb:hover {
+  background: var(--pas-accent) !important;
 }
 
 /* 5. Scoped Footer */

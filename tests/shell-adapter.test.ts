@@ -133,12 +133,12 @@ describe('Stage 6B.1: Monochrome Global Shell Adapter', () => {
     expect(css).toContain('html[data-pas-theme="monochrome"] .content-right');
     expect(css).toContain('display: table-cell !important');
 
-    // Universal and bare tag selectors are forbidden
+    // Bare tag selectors are forbidden at root
     expect(css).not.toContain('\n* {');
-    expect(css).not.toContain('body {');
-    expect(css).not.toContain('button {');
-    expect(css).not.toContain('table {');
-    expect(css).not.toContain('a {');
+    expect(css).not.toContain('\nbody {');
+    expect(css).not.toContain('\nbutton {');
+    expect(css).not.toContain('\ntable {');
+    expect(css).not.toContain('\na {');
   });
 
   it('mounts Monochrome shell adapter, sets data attributes and style tag', () => {
