@@ -5,7 +5,7 @@
 **Repository / Directory:** `mypesu-themes`  
 **Product Type:** Independent browser extension  
 **Initial Browser Targets:** Google Chrome and Mozilla Firefox (Desktop)  
-**Specification Status:** Stage 5 (BUILD — ICON & UI FOUNDATION) Complete — Gated for Owner Sign-off  
+**Specification Status:** Stage 6A (INTEGRATE — EXTENSION UI) Complete — Gated for Owner Sign-off  
 **Date:** 6 November 2026
 
 ---
@@ -62,14 +62,18 @@
 ### Preparation Deliverables (Stage 4)
 - `17_REPOSITORY_RECONNAISSANCE.md` — Workspace, Git, and environment reconnaissance report, implementation readiness matrix, and Slice 0 scope.
 
-### Build Foundation Deliverables (Stage 5 — Slice 0 & Addendum 5.1)
+### Build Foundation Deliverables (Stage 5 — Slice 0, Addenda 5.1 & 5.1-B)
 - `18_STAGE5_FOUNDATION_REPORT.md` — Complete verification report for Slice 0: project foundation, dependencies, manifest audit, preference and theme registries, and test results.
 - `19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md` — Verification report for Stage 5.1: shadcn/ui and Tailwind CSS v4 integration, decoupled extension UI appearance mode, and appearance controls.
+- `20_STAGE5_ICON_INTEGRATION_REPORT.md` — Complete verification report for official black-and-white compass icon integration across Chrome and Firefox MV3.
+
+### Extension UI Deliverables (Stage 6A)
+- `21_STAGE6A_EXTENSION_UI_REPORT.md` — Complete verification report for Stage 6A: production-quality Popup and Theme Studio Options page, independent appearance systems, live storage sync, verified screenshots, and dual-target builds.
 
 ---
 
 ## 5. Current Gate & Next Immediate Action
 
-* **Current Status:** Stage 5 (BUILD: Foundation & Extension UI Addendum) is complete.
-* **Next Action:** The product owner reviews [19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md). Once approved, proceed to **Stage 6 (INTEGRATE: Slice 6.1 — Monochrome Shell Adapter)**.
+* **Current Status:** Stage 6A (INTEGRATE: Production-Quality Extension UI) is complete.
+* **Next Action:** The product owner reviews [21_STAGE6A_EXTENSION_UI_REPORT.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/21_STAGE6A_EXTENSION_UI_REPORT.md). Once approved, proceed to **Stage 6B (INTEGRATE: Portal Visual Adapters & CSS Injection)**.
 * **Strict Rule:** DO NOT implement portal DOM styling, live preview, or page adapters until authorized by the owner.
