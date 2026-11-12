@@ -5,7 +5,7 @@
 **Repository / Directory:** `mypesu-themes`  
 **Product Type:** Independent browser extension  
 **Initial Browser Targets:** Google Chrome and Mozilla Firefox (Desktop)  
-**Specification Status:** Stage 6B.1 (INTEGRATE — MONOCHROME SHELL ADAPTER) Complete — Gated for Owner Sign-off  
+**Specification Status:** Stage 6B.2 (INTEGRATE — MONOCHROME DASHBOARD ADAPTER) Complete — Gated for Owner Sign-off  
 **Date:** 6 November 2026
 
 ---

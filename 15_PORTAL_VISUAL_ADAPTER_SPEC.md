@@ -65,35 +65,34 @@ The Global Portal Shell encompasses the persistent layout chrome across authenti
 
 ## 3. Template 2: Student Dashboard Adapter (`dashboard`)
 
-The Student Dashboard presents summary metric cards, recent announcements, timetable snippets, and quick action links.
+The Student Dashboard presents the announcements carousel and the verified campus events & notices feed within the SPA content root (`#StudentProfilePESUContent`).
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
-│ WELCOME BACK, STUDENT                                                  │
+│ #announcements-carousel (Carousel Slide View)                         │
+│ [ < ] 🖼 Banner Image & Headline Caption                          [ > ]│
 │                                                                        │
-│ ┌───────────────────┐ ┌───────────────────┐ ┌───────────────────┐      │
-│ │ Enrolled Courses  │ │ Current Semester  │ │ Campus Notices    │      │
-│ │ 6 Active Subjects │ │ Semester 5        │ │ 3 Unread Notices  │      │
-│ └───────────────────┘ └───────────────────┘ └───────────────────┘      │
-│                                                                        │
-│ RECENT ANNOUNCEMENTS                                                   │
+│ .info-content-wrapper                                                  │
 │ ┌────────────────────────────────────────────────────────────────────┐ │
-│ │ ● CIE-2 Schedule Announced                       Nov 04, 2026      │ │
-│ │   Please check the formal examination seating plan in academic...  │ │
-│ │   [ Download Attachment 📄 ]                                       │ │
+│ │ 📢 Academic Schedule Announcement                     12 Nov 2026  │ │
+│ │    Formal test seating plan published for current semester...      │ │
 │ ├────────────────────────────────────────────────────────────────────┤ │
-│ │ ● Guest Lecture on Advanced Agentic Systems       Nov 02, 2026      │ │
+│ │ ℹ️ Library Operational Hours Notice                   10 Nov 2026  │ │
 │ └────────────────────────────────────────────────────────────────────┘ │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 3.1 Visual Specification:
-* **Visual Hierarchy:** Prominent greeting and quick-metric cards at the top, followed by chronological announcement cards with clear timestamps.
-* **Surfaces & Cards:** Metric cards and announcements mount on `--pas-surface` with a 1px border (`--pas-border`) and theme-calibrated corner radius (`--pas-radius`).
-* **Typography:** Announcement titles styled in `sizeLg` (20px, semi-bold); timestamps styled in `sizeXs` (12px) with `--pas-text-muted`.
-* **Buttons & Links:** Attachment download links styled with `--pas-link`, retaining an explicit underline affordance on hover.
+### 3.1 Visual Specification (Verified Stage 6B.2):
+* **No Synthetic Wrappers:** Inspection confirmed zero generic `.card` or metric-card wrappers on the portal dashboard. Styling strictly binds to real observed DOM classes: `#announcements-carousel`, `.info-content-wrapper`, `.events-announcements`, `.info-contents.announcements`, `.announcements-inner`, `.anc-icon`, `.anc-text`, and `.published-date.text-right`.
+* **Carousel Frame:** Subtle surface elevation (`--pas-surface-raised`), 1px border (`--pas-border`), rounded corners (`--pas-radius-medium`), and themed chevron controls. Image aspect ratios and slide timings are strictly preserved.
+* **Announcements Feed:**
+  - Outer Wrapper (`.info-content-wrapper`): `--pas-canvas` background, `--pas-border` outline, `--pas-radius-medium`.
+  - Notice Items (`.anc-item`, `.announcements-inner > div`): Mounted on `--pas-surface` with `--pas-border-subtle` border and `--pas-radius-small`. Hover elevates to `--pas-surface-raised` with `--pas-border`.
+  - Icon Badges (`.anc-icon`): Neutral elevated container with `--pas-accent` foreground.
+  - Typography: Titles in `--pas-text` (medium weight); descriptions and timestamps in `--pas-text-muted`.
 * **Protected Elements (Do NOT Touch):**
-  - Announcement body text content, official download URLs, and emergency university alert banners.
+  - Carousel navigation controls (`data-slide="prev"`, `data-slide="next"`), anchor destinations (`href="#announcements-carousel"`), click listeners.
+  - Announcement body text, link targets, and dates (zero string mutation or redaction).
 
 ---
 

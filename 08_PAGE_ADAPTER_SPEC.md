@@ -129,18 +129,27 @@ export interface PageAdapter {
 ### 4.2 Student Dashboard Adapter (`dashboard`)
 * **ID:** `dashboard`
 * **Name:** Student Dashboard
-* **Status:** `PROVISIONAL` (Awaiting Owner Manual Inspection)
-* **Route Pattern:** `^/Academy/.*dashboard.*$`
-* **Provisional Target Selectors:**
-  - Main Dashboard Wrapper: `.dashboard-content` / `.home-container` *(PROVISIONAL)*
-  - Metric Summary Cards: `.card` / `.panel-default` *(PROVISIONAL)*
-  - Announcement Items: `.announcement-item` / `.notice-box` *(PROVISIONAL)*
-* **Safe Styling Scope:**
-  - Metric summary cards: card surface (`--pas-surface`), border (`--pas-border`), corner radius (`--pas-radius`).
-  - Announcement and notice list items: card dividers, timestamp text (`--pas-text-muted`), heading text (`--pas-text`).
-  - Quick action links: button padding and hover highlights.
+* **Status:** `VERIFIED (Stage 6B.2 Monochrome Dashboard)`
+* **Host & Route Gating:** Host `www.pesuacademy.com`, Route Pattern `/^\/Academy\/s\/studentProfilePESU(?:\/.*)?$/`
+* **Structural Signature Activation:**
+  - Requires container `#StudentProfilePESUContent` (count: 1)
+  - Requires `#announcements-carousel` (count: 1)
+  - Requires `.info-contents.announcements` (count: 1)
+  - Conflict check: Rejects activation if course materials markers (`.materials-table`, `.course-materials-table`, `#course-materials-container`) are detected in `#StudentProfilePESUContent`.
+* **Verified Target Selectors (Stage 6B.2):**
+  - Carousel Container: `#announcements-carousel` (border, rounded corners, subtle surface elevation)
+  - Carousel Controls & Indicators: `.carousel-indicators`, `.carousel-control`, `.carousel-inner`, `.carousel-caption`
+  - Announcements Wrapper: `.info-content-wrapper`, `.events-announcements`, `.info-contents.announcements`, `.announcements-inner`
+  - Announcement Items & Rows: `.announcements-inner .anc-item`, `.announcements-inner > div`
+  - Announcement Metadata & Icons: `.anc-icon`, `.anc-text`, `.published-date.text-right`
+* **Safe Styling Scope (Monochrome):**
+  - Carousel frame background (`--pas-surface-raised`), border (`--pas-border`), indicator pills (`--pas-accent`).
+  - Announcements card container (`--pas-canvas` with `--pas-border`).
+  - Notice rows surface (`--pas-surface`) with subtle hover elevation (`--pas-surface-raised`).
+  - Typography: Titles in `--pas-text`, descriptions and published dates in `--pas-text-muted`.
 * **Protected & Excluded Elements:**
-  - Notice text strings, official attachment download links, and emergency university broadcast alert banners.
+  - Notice text strings, official attachment download links, carousel slide transition timings, and carousel action controls (`data-slide`, `href`).
+  - No synthetic `.card` or quick-link wrappers are introduced. Zero mutation of academic or personal records.
 
 ### 4.3 Course Materials & Syllabi Adapter (`courses`)
 * **ID:** `courses`
