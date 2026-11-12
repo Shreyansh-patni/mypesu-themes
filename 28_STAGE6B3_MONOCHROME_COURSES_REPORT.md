@@ -175,3 +175,4 @@ Both `.output/chrome-mv3/manifest.json` and `.output/firefox-mv3/manifest.json` 
 2. **Proceed to Stage 6B.4 (Apple-Inspired Portal Theme Integration):**
    - Implement Apple-Inspired presentation rules for Shell, Dashboard, and Courses.
    - Wire Action Blue (`#0066cc`) accents, subtle system borders (`#d2d2d7`), and audited typography contrast across portal views.
+
