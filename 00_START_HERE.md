@@ -5,7 +5,7 @@
 **Repository / Directory:** `mypesu-themes`  
 **Product Type:** Independent browser extension  
 **Initial Browser Targets:** Google Chrome and Mozilla Firefox (Desktop)  
-**Specification Status:** Stage 6A.1 (INTEGRATE — SCROLLBAR POLISH) Complete — Gated for Owner Sign-off  
+**Specification Status:** Stage 6B.0 (INTEGRATE — PORTAL INSPECTION PREPARATION) Complete — Gated for Owner Inspection  
 **Date:** 6 November 2026
 
 ---
@@ -71,10 +71,14 @@
 - `21_STAGE6A_EXTENSION_UI_REPORT.md` — Complete verification report for Stage 6A: production-quality Popup and Theme Studio Options page, independent appearance systems, live storage sync, verified screenshots, and dual-target builds.
 - `22_STAGE6A_SCROLLBAR_POLISH_REPORT.md` — Complete verification report for Stage 6A.1: custom slimline scrollbar design, dual-mode tokens, Chrome and Firefox CSS properties, and overflow verification.
 
+### Portal Inspection Preparation Deliverables (Stage 6B.0)
+- `23_STAGE6B_PORTAL_INSPECTION_PREPARATION_REPORT.md` — Complete preparation report for Stage 6B: content script lifecycle audit, P0 scope, sanitized fixture plan, integration risks, and prerequisites.
+- `24_PORTAL_MANUAL_INSPECTION_WORKSHEET.md` — Canonical manual inspection worksheet for owner execution in Chrome DevTools on authenticated PESU Academy session.
+
 ---
 
 ## 5. Current Gate & Next Immediate Action
 
-* **Current Status:** Stage 6A.1 (INTEGRATE: Extension UI Custom Scrollbar Polish) is complete.
-* **Next Action:** The product owner reviews [22_STAGE6A_SCROLLBAR_POLISH_REPORT.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/22_STAGE6A_SCROLLBAR_POLISH_REPORT.md). Once approved, proceed to **Stage 6B (INTEGRATE: Portal Visual Adapters & CSS Injection)**.
-* **Strict Rule:** DO NOT implement portal DOM styling, live preview, or page adapters until authorized by the owner.
+* **Current Status:** Stage 6B.0 (INTEGRATE: Portal Inspection Preparation) is complete.
+* **Next Action:** The product owner executes [24_PORTAL_MANUAL_INSPECTION_WORKSHEET.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/24_PORTAL_MANUAL_INSPECTION_WORKSHEET.md) on live `https://www.pesuacademy.com/*` in Chrome DevTools, records verified selectors, and reviews [23_STAGE6B_PORTAL_INSPECTION_PREPARATION_REPORT.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/23_STAGE6B_PORTAL_INSPECTION_PREPARATION_REPORT.md).
+* **Strict Rule:** DO NOT implement portal DOM styling, live preview, or page adapters until verified selectors are supplied by the owner.
