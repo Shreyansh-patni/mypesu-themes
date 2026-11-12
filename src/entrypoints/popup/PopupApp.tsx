@@ -46,7 +46,7 @@ export const PopupApp: React.FC = () => {
 
   return (
     <main
-      className="w-[360px] max-w-[400px] min-w-[320px] max-h-[580px] flex flex-col bg-[var(--card)] text-[var(--card-foreground)] font-sans text-xs leading-normal select-none overflow-hidden transition-colors duration-200"
+      className="w-[360px] max-w-[400px] min-w-[320px] h-[500px] max-h-[580px] flex flex-col bg-[var(--card)] text-[var(--card-foreground)] font-sans text-xs leading-normal select-none overflow-hidden transition-colors duration-200"
       aria-label="MyPESU Themes Extension Popup"
     >
       {/* 1. Header */}

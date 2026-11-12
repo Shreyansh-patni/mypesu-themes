@@ -68,7 +68,7 @@ export const OptionsApp: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] font-sans flex flex-col md:flex-row transition-colors duration-200">
+    <div className="min-h-screen md:h-screen md:overflow-hidden bg-[var(--background)] text-[var(--foreground)] font-sans flex flex-col md:flex-row transition-colors duration-200">
       {/* Reset Confirmation Dialog */}
       <ConfirmationDialog
         isOpen={isResetDialogOpen}
@@ -82,7 +82,7 @@ export const OptionsApp: React.FC = () => {
       />
 
       {/* 1. Left Sidebar Rail */}
-      <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-[var(--border)] bg-[var(--card)] p-4 flex flex-col shrink-0">
+      <aside className="w-full md:w-64 md:h-screen border-b md:border-b-0 md:border-r border-[var(--border)] bg-[var(--card)] p-4 flex flex-col shrink-0 md:overflow-y-auto">
         {/* Brand Header */}
         <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[var(--border)]">
           <BrandLogo size={32} />
@@ -146,7 +146,7 @@ export const OptionsApp: React.FC = () => {
       </aside>
 
       {/* 2. Main Content Canvas */}
-      <main className="flex-1 p-6 md:p-8 max-w-4xl overflow-y-auto">
+      <main className="flex-1 md:h-screen p-6 md:p-8 max-w-4xl overflow-y-auto">
         {/* Global Error Banner if any */}
         {error && (
           <div className="mb-6 p-3 rounded-lg bg-[var(--destructive)]/10 text-[var(--destructive)] border border-[var(--destructive)]/20 text-xs flex items-center justify-between">
