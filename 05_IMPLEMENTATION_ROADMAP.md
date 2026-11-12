@@ -130,10 +130,20 @@
   - Dynamic SPA transitions between Dashboard and Courses verified with clean adapter unmount/mount.
   - Unit test suite expanded to 65 tests across 7 test suites; 100% passing.
   - Production Chrome MV3 (471.05 kB) and Firefox MV3 (471.14 kB) builds verified.
-* **Stage 6B.4+ Deliverables (Apple-Inspired Pack & Live Preview — NEXT):**
-  - Slice 6.4: Apple-Inspired Theme Pack integration for Shell, Dashboard, and Courses.
-  - Slice 6.5: In-tab Live Preview, Apply, and Cancel/Revert state machine.
-* **Gate:** Owner review of `28_STAGE6B3_MONOCHROME_COURSES_REPORT.md` before Slice 6.4 authorization.
+* **Stage 6B.4 & 6B.5 Deliverables (Monochrome Refinement & Root Cause Audit — COMPLETE):**
+  - Paused Apple-Inspired integration per product owner directive to achieve complete, high-quality Monochrome coverage across verified portal pages.
+  - Root cause audit conducted in `31_MONOCHROME_COVERAGE_ROOT_CAUSE_AUDIT.md`: eliminated active sidebar navigation blue leak and introduced 8px custom monochrome scrollbars.
+  - Expanded DevTools inspection worksheet delivered in `32_PORTAL_PAGE_STRUCTURE_INSPECTION_WORKSHEET.md` covering 6 candidate page families: My Courses Overview, Course Detail Tabs & Matrix, Timetable, Attendance, Calendar, and Profile.
+  - Maintained strict safety exclusions (fee payments, exams, grade cards, authentication).
+  - Preserved protected action icons, anchors, and non-recolorable attendance percentage invariants.
+  - Unit test suite: 65 tests passing across 7 suites; typecheck 0 errors; dual MV3 builds clean.
+* **Stage 6B.6+ Deliverables (Expanded Page Adapters & Live Preview — NEXT):**
+  - Slice 6.6: `CoursesOverviewAdapter` upon owner DevTools inspection.
+  - Slice 6.7: `CourseDetailAdapter` (unit tabs, syllabus tabs, learning matrix).
+  - Slice 6.8: `TimetableAdapter` (schedule grid; zero schedule data mutation).
+  - Slice 6.9: `AttendanceAdapter` (attendance summary; non-recolorable percentage).
+  - Slice 6.10: `CalendarAdapter` (calendar toolbar and month grid).
+* **Gate:** Owner review of `31_MONOCHROME_COVERAGE_ROOT_CAUSE_AUDIT.md` and submission of verified selectors via `32_PORTAL_PAGE_STRUCTURE_INSPECTION_WORKSHEET.md`.
 
 ### Stage 7 — Verify: Independent Test Ladder & Pilot
 * **Status:** **PENDING STAGE 6 APPROVAL**
