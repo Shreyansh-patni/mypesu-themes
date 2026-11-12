@@ -194,17 +194,17 @@ describe('Stage 6B.2: Monochrome Dashboard Adapter', () => {
     const leftCtrl = doc.querySelectorAll('.left.carousel-control')[0];
     const rightCtrl = doc.querySelectorAll('.right.carousel-control')[0];
 
-    expect(leftCtrl.getAttribute('href')).toBe('#announcements-carousel');
-    expect(leftCtrl.getAttribute('data-slide')).toBe('prev');
-    expect(rightCtrl.getAttribute('data-slide')).toBe('next');
+    expect(leftCtrl?.getAttribute('href')).toBe('#announcements-carousel');
+    expect(leftCtrl?.getAttribute('data-slide')).toBe('prev');
+    expect(rightCtrl?.getAttribute('data-slide')).toBe('next');
 
     // Mount adapter
     DashboardAdapter.mount(doc as any, DEFAULT_PREFERENCES);
 
     // Verify controls and attributes were not overwritten or stripped
-    expect(leftCtrl.getAttribute('href')).toBe('#announcements-carousel');
-    expect(leftCtrl.getAttribute('data-slide')).toBe('prev');
-    expect(rightCtrl.getAttribute('data-slide')).toBe('next');
+    expect(leftCtrl?.getAttribute('href')).toBe('#announcements-carousel');
+    expect(leftCtrl?.getAttribute('data-slide')).toBe('prev');
+    expect(rightCtrl?.getAttribute('data-slide')).toBe('next');
   });
 
   it('strictly isolates academic content from mutation', () => {
