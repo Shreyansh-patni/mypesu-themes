@@ -23,5 +23,6 @@ Before proposing or implementing any changes, agents must consult the following 
 - **Minimal Permissions:** Manifest permissions restricted strictly to `["storage"]` and host match `["https://www.pesuacademy.com/*"]`. Never introduce `tabs`, `cookies`, `scripting`, `webRequest`, or `<all_urls>`.
 - **Safe Fallback:** If preference resolution fails or errors occur, leave the native portal appearance completely unstyled. Never inject partial styles.
 - **UI Architecture:** Extension-owned interfaces (Popup, Options) use **shadcn/ui** and **Tailwind CSS v4** (`@tailwindcss/vite`). Extension UI appearance (`extensionUiAppearance`) is strictly decoupled from portal theme appearance (`themeId`, `appearanceMode`).
+- **Extension Branding & Icons:** The official extension mark is the black-and-white compass from `asset/brand/pesu-compass-bw-source.png`. Icons in `public/icon-*.png` must remain strictly normalized to pure black (`#000000`) and pure white (`#FFFFFF`) with zero grey or colored pixels.
 - **Windows Tooling Rule:** Always invoke package managers via `.cmd` (e.g. `pnpm.cmd`, `npm.cmd`).
 
