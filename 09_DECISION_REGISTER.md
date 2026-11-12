@@ -40,6 +40,7 @@ Every item in this register is classified under one of three statuses:
 | **DEC-14** | **UI Libraries**| Theme UI Component Libraries | **`RECOMMENDED_PENDING_CONFIRMATION`** | Defer freezing final popup/options component libraries until the owner provides theme-specific design MDs and UI library packages. Shell UI remains headless/clean in early stages. | 2026-11-06 |
 | **DEC-15** | **Scope** | Non-Goals & Excluded Utilities | **`RECOMMENDED_PENDING_CONFIRMATION`** | Strict prohibition against academic utilities: no slide downloaders, no SGPA/CGPA calculators, no attendance shortage estimators, no scraping bots, and no workflow automation. | 2026-11-06 |
 | **DEC-16** | **Design QA** | Contrast Standard Target | **`RECOMMENDED_PENDING_CONFIRMATION`** | Adopt **WCAG 2.2 AA** (>= 4.5:1 body, >= 3.0:1 large/UI) as mandatory design release gate across all theme modes. | 2026-11-06 |
+| **DEC-17** | **Distribution** | Firefox Gecko Extension ID & Data Collection | **`CONFIRMED_BY_OWNER`** | Declare `browser_specific_settings.gecko.data_collection_permissions.required = ["none"]`. Stable Gecko ID remains `OWNER_INPUT_REQUIRED` as a signing/release prerequisite; not invented in code. | 2026-11-12 |
 
 ---
 

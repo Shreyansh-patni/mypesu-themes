@@ -19,10 +19,11 @@
         ▼
 [ Stage 3: Design ] ──► COMPLETE (Theme specs, Theme Studio UX, WCAG QA matrix, UI matrix)
         │
-        ▼ [ GATE: Owner Approval of Stage 3 Required to Proceed to Stage 4 ]
-[ Stage 4: Prepare ] ──► PENDING (Read-only environment check, package plan)
+[ Stage 4: Prepare ] ──► COMPLETE (Reconnaissance report 17_REPOSITORY_RECONNAISSANCE.md approved)
         │
-[ Stage 5: Build ] ──► PENDING (Zero-background WXT scaffold, local storage, empty shell)
+        ▼
+[ Stage 5: Build ] ──► SLICE 0 COMPLETE (Foundation shell, Zod preferences, typed registry, MV3 dual builds)
+        │                 [ GATE: Owner Review of Slice 0 Foundation Report ]
         │
 [ Stage 6: Integrate ] ─► PENDING (Monochrome + Apple packs, verified page adapters)
         │
@@ -57,21 +58,24 @@
   - `16_ACCESSIBILITY_AND_VISUAL_QA.md` (WCAG 2.2 AA audit, 6 standard viewports, 12 visual QA test cases).
 * **Gate Requirement:** Owner reviews and signs off on Stage 3 design package before initiating Stage 4.
 
-### Stage 4 — Prepare: Repository & Environment Plan
-* **Status:** **NEXT IMMEDIATE STAGE (PENDING STAGE 3 APPROVAL)**
-* **Objective:** Read-only inspection of the project folder; prepare WXT configuration and dependency plan.
-* **Deliverables:** `RECON.md`, baseline checks, command verification (`pnpm install`, `pnpm build`), and environment matrix.
-* **Strict Rule:** Read-only. No dependencies installed; no repository initialized.
+### Stage 4 — Prepare: Repository & Environment Reconnaissance
+* **Status:** **COMPLETE** (Report delivered in `17_REPOSITORY_RECONNAISSANCE.md`).
+* **Key Achievements:** Verified workspace root, confirmed tool versions (Node `v26.7.0`, pnpm `11.23.0`, Git `2.55`), confirmed zero premature code/scaffolding, established implementation readiness matrix.
 
-### Stage 5 — Build: Shared Extension Foundation Slice
-* **Status:** **PENDING STAGE 4 APPROVAL**
-* **Objective:** Scaffold clean WXT extension targeting Chrome and Firefox under the Zero-Background Architecture.
+### Stage 5 — Build: Shared Extension Foundation (Slice 0)
+* **Status:** **SLICE 0 COMPLETE / GATED FOR OWNER REVIEW**
+* **Objective:** Scaffold clean, minimal WXT extension targeting Chrome and Firefox under the Zero-Background Architecture.
 * **Deliverables:**
-  - WXT project scaffold with TypeScript and React.
-  - Extension Popup and Theme Studio options page shells.
-  - Type-safe `browser.storage.local` preference provider with Zod validation.
-  - Domain guard restricting content script to `https://www.pesuacademy.com/*`.
-* **Gate:** Extension builds and loads cleanly in Chrome and Firefox with zero console errors. No portal styles injected yet.
+  - WXT project foundation targeting Chrome MV3 and Firefox MV3 (`wxt.config.ts`).
+  - Git initialized with `.gitignore` and developer guidelines (`AGENTS.md`).
+  - Strict TypeScript configuration (`tsconfig.json`) and Vitest configuration (`vitest.config.ts`).
+  - Minimal foundation shells for Popup (`entrypoints/popup/`) and Options (`entrypoints/options/`).
+  - Type-safe `browser.storage.local` preference provider with Zod validation (`src/core/preferences/`).
+  - Typed theme registry for Monochrome and Apple-Inspired themes (`src/core/theme-registry/`).
+  - Inert content script shell (`entrypoints/pesu.content/`) scoped strictly to `https://www.pesuacademy.com/*`.
+  - Comprehensive unit test suite (16 tests in 3 files) passing 100%.
+  - Production builds verified for Chrome MV3 (`.output/chrome-mv3`) and Firefox MV3 (`.output/firefox-mv3`).
+* **Gate:** Owner review of `18_STAGE5_FOUNDATION_REPORT.md` before proceeding to Slice 1.
 
 ### Stage 6 — Integrate: Theme Engine & Core Page Adapters
 * **Status:** **PENDING STAGE 5 APPROVAL & MANUAL SELECTOR VERIFICATION**
