@@ -1,9 +1,11 @@
 import type { PageAdapter } from './types';
 import type { UserPreferences } from '../types/preferences';
 import { ShellAdapter } from './shell.adapter';
+import { DashboardAdapter } from './dashboard.adapter';
 
 export const REGISTERED_ADAPTERS: readonly PageAdapter[] = Object.freeze([
   ShellAdapter,
+  DashboardAdapter,
 ]);
 
 /**
@@ -57,7 +59,7 @@ export function applyActiveAdapters(
 }
 
 /**
- * Completely unmounts all page adapters and clears all extension attributes.
+ * Cleans up and unmounts all registered page adapters from the document.
  */
 export function unmountAllAdapters(doc: Document): void {
   if (!doc) return;
@@ -65,4 +67,3 @@ export function unmountAllAdapters(doc: Document): void {
     adapter.unmount(doc);
   }
 }
-
