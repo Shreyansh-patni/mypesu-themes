@@ -80,8 +80,8 @@
 * **Gate:** Owner review of `19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md` before proceeding to Stage 6.
 
 ### Stage 6 — Integrate: Extension UI & Portal Page Adapters
-* **Status:** **STAGE 6A & 6B.0 COMPLETE / GATED FOR OWNER PORTAL INSPECTION**
-* **Objective:** Implement production-quality extension UI (Stage 6A), custom scrollbar polish (Stage 6A.1), prepare portal manual inspection protocol (Stage 6B.0), followed by portal DOM page adapters and CSS injection engine (Stage 6B.1+).
+* **Status:** **STAGE 6A, 6A.1, 6B.0 & 6B.1 COMPLETE / GATED FOR OWNER REVIEW (SLICE 6.2 PENDING)**
+* **Objective:** Implement production-quality extension UI (Stage 6A), custom scrollbar polish (Stage 6A.1), portal inspection preparation (Stage 6B.0), followed by portal DOM page adapters and CSS injection engine (Stage 6B.1+).
 * **Stage 6A Deliverables (Extension UI — COMPLETE):**
   - Fluid, responsive Browser Action Popup (320px–400px fluid, ~580px max-height) with active theme selection, portal appearance segmented controls, quick readability toggles, and direct Theme Studio shortcut.
   - Full-screen Theme Studio Options page with Apple-style navigation rail (Overview, Themes, Appearance, Preferences, About).
@@ -90,7 +90,6 @@
   - Preferences management with Information Density (`comfortable` vs `compact`), bounded Font Scaling (`100%` to `120%`), and factory reset with confirmation dialog.
   - Official Black & White compass mark integration across Popup, Options rail, and About view.
   - Reactive cross-context synchronization between Popup and Options via `browser.storage.onChanged`.
-  - Comprehensive unit test suite expanded to 25 tests across 4 test suites; 100% passing.
   - Production Chrome MV3 and Firefox MV3 builds verified; 5 genuine screenshots captured.
 * **Stage 6A.1 Deliverables (Custom Scrollbar Polish — COMPLETE):**
   - Refined, slim 8px custom scrollbar design across all scrollable containers in Popup and Theme Studio.
@@ -103,13 +102,20 @@
   - Manual inspection worksheet created in `24_PORTAL_MANUAL_INSPECTION_WORKSHEET.md` with step-by-step Chrome DevTools instructions and strict zero-academic-data privacy guardrails.
   - Preparation report delivered in `23_STAGE6B_PORTAL_INSPECTION_PREPARATION_REPORT.md` auditing content script lifecycle, reversible CSS custom property injection, and integration risks.
   - Sanitized fixture architecture established in `tests/fixtures/portal/` with synthetic templates (`shell`, `dashboard`, `courses`).
-* **Stage 6B.1+ Deliverables (Portal Visual Adapters & CSS Injection — NEXT):**
-  - Prerequisite: Owner executes `24_PORTAL_MANUAL_INSPECTION_WORKSHEET.md` on authorized portal and verifies provisional selectors.
-  - Slice 6.1: Monochrome Light & Dark CSS injection on Global Portal Shell.
+* **Stage 6B.1 Deliverables (Monochrome Global Shell Adapter — COMPLETE):**
+  - Implemented `ShellAdapter` ([`src/core/page-adapters/shell.adapter.ts`](file:///c:/Users/shrey/Downloads/mypesu%20themes/src/core/page-adapters/shell.adapter.ts)) using verified structural selectors.
+  - Strict route & hostname gating (`www.pesuacademy.com`, `/Academy/s/studentProfilePESU`).
+  - Complete preservation of legacy table-based layout semantics (`.content-wrapper: table`, `.menu-left: table-cell`, `.content-right: table-cell`).
+  - Scoped CSS rules applying Monochrome Light and Dark mode tokens without global selector spill.
+  - Protected elements (logos, notification badge, user profile, logout button) guarded from mutation.
+  - Dynamic system appearance resolution and live storage synchronization via `browser.storage.onChanged`.
+  - Comprehensive unit test suite expanded to 36 tests across 5 test suites; 100% passing.
+  - Production Chrome MV3 (458.60 kB) and Firefox MV3 (458.70 kB) builds verified.
+* **Stage 6B.2+ Deliverables (Live Preview & Inner Adapters — NEXT):**
   - Slice 6.2: In-tab Live Preview, Apply, and Cancel/Revert state machine.
   - Slice 6.3: Apple-Inspired Theme Pack integration with Action Blue (`#0066cc`).
   - Slice 6.4: Student Dashboard and Course Materials page adapters.
-* **Gate:** Owner review of `23_STAGE6B_PORTAL_INSPECTION_PREPARATION_REPORT.md` and worksheet execution before Stage 6B.1 implementation begins.
+* **Gate:** Owner review of `26_STAGE6B1_MONOCHROME_SHELL_REPORT.md` before Slice 6.2 authorization.
 
 ### Stage 7 — Verify: Independent Test Ladder & Pilot
 * **Status:** **PENDING STAGE 6 APPROVAL**
