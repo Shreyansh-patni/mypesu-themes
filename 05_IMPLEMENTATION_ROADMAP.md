@@ -120,11 +120,20 @@
   - Dynamic SPA lifecycle managed via debounced, narrowly-scoped `MutationObserver` on `#StudentProfilePESUContent`.
   - Unit test suite expanded to 48 tests across 6 test suites; 100% passing.
   - Production Chrome MV3 (464.56 kB) and Firefox MV3 (464.65 kB) builds verified.
-* **Stage 6B.3+ Deliverables (Course Materials & Apple Shell — NEXT):**
-  - Slice 6.3: Course Materials and Syllabi adapter (`courses`).
-  - Slice 6.4: Apple-Inspired Theme Pack integration for Shell and Dashboard.
+* **Stage 6B.3 Deliverables (Monochrome Course Materials & Syllabi Adapter — COMPLETE):**
+  - Implemented `CoursesAdapter` ([`src/core/page-adapters/courses.adapter.ts`](file:///c:/Users/shrey/Downloads/mypesu%20themes/src/core/page-adapters/courses.adapter.ts)) completing the triad of initial P0 Monochrome portal adapters.
+  - Structural signature detection verifying `#StudentProfilePESUContent`, exactly one visible materials table (`thead th` + `tbody tr`), and `.short-title`. Rejects unrendered hidden tables and conflicting dashboard markers.
+  - Coherent visual transformation for materials tables: bold uppercase headers with border divider, subtle alternating row surfaces (`tbody tr:nth-child(even)`), restrained hover feedback, and calibrated density cell padding.
+  - Styled `.short-title` unit/course badges and `.info-note` footnotes using canonical Monochrome tokens.
+  - Strict preservation of protected action icon classes (`.pesu-icon-play-button`, `.pesu-icon-presentation-graphs`, `.pesu-icon-open-book`, `.pesu-icon-document`, `.pesu-icon-doc-tick`, `.pesu-icon-faq`, `.pesu-icon-list-items`, `.pesu-icon-file`) and parent `td.text-center` anchors.
+  - Zero scraping, zero URL reading, and zero download triggering.
+  - Dynamic SPA transitions between Dashboard and Courses verified with clean adapter unmount/mount.
+  - Unit test suite expanded to 65 tests across 7 test suites; 100% passing.
+  - Production Chrome MV3 (471.05 kB) and Firefox MV3 (471.14 kB) builds verified.
+* **Stage 6B.4+ Deliverables (Apple-Inspired Pack & Live Preview — NEXT):**
+  - Slice 6.4: Apple-Inspired Theme Pack integration for Shell, Dashboard, and Courses.
   - Slice 6.5: In-tab Live Preview, Apply, and Cancel/Revert state machine.
-* **Gate:** Owner review of `27_STAGE6B2_MONOCHROME_DASHBOARD_REPORT.md` before Slice 6.3 authorization.
+* **Gate:** Owner review of `28_STAGE6B3_MONOCHROME_COURSES_REPORT.md` before Slice 6.4 authorization.
 
 ### Stage 7 — Verify: Independent Test Ladder & Pilot
 * **Status:** **PENDING STAGE 6 APPROVAL**
