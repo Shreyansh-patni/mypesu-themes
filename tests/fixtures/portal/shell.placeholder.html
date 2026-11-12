@@ -2,59 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PESU Academy — Global Shell (Synthetic Structural Placeholder)</title>
+  <title>PESU Academy — Verified Global Shell (Synthetic Structural Placeholder)</title>
   <!-- NOTE: Synthetic structural representation for offline adapter testing. Zero real academic or student data. -->
 </head>
-<body class="theme-default">
-  <header class="navbar header-top" id="header">
-    <div class="navbar-brand">
-      <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>" alt="University Logo" class="university-logo" width="120" height="40">
-      <span class="portal-title">PES UNIVERSITY</span>
+<body>
+  <!-- 1. Verified Top Navigation / Header -->
+  <nav id="pge_menu">
+    <div class="container-fluid">
+      <header>
+        <div class="navbar-brand">
+          <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>" alt="University Logo" class="university-logo" width="120" height="40">
+          <span class="brand-text">PES UNIVERSITY</span>
+        </div>
+        <div class="header-actions">
+          <div class="notification-badge" id="notification-counter">
+            <span class="badge-count">0</span>
+          </div>
+          <div class="user-menu-dropdown">
+            <span class="user-display-name">Student Account</span>
+            <button type="button" class="btn-logout">Logout</button>
+          </div>
+        </div>
+      </header>
     </div>
-    <div class="navbar-actions">
-      <div class="notification-badge" id="notification-counter" role="status" aria-label="Notifications">
-        <span class="badge-count">3</span>
-      </div>
-      <div class="user-profile-menu">
-        <span class="user-name">Student Account</span>
-        <button type="button" class="btn-logout">Logout</button>
-      </div>
+  </nav>
+
+  <!-- 2. Verified Table-Based Layout Wrapper -->
+  <div class="content-wrapper" style="display: table; width: 100%;">
+    <!-- 2A. Left Sidebar Menu (Table Cell) -->
+    <div class="menu-left" style="display: table-cell; width: 220px; vertical-align: top;">
+      <ul id="studentProfilePESUHomeMenu" class="sidebar-nav-list">
+        <li class="menu-item active">
+          <a href="/Academy/s/studentProfilePESU" class="nav-link">
+            <span class="nav-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="#" class="nav-link">
+            <span class="nav-text">My Courses</span>
+          </a>
+        </li>
+      </ul>
     </div>
-  </header>
 
-  <div class="layout-container" id="main-layout">
-    <aside class="sidebar-wrapper" id="sidebar" aria-label="Main Navigation">
-      <nav class="sidebar-menu">
-        <ul class="nav-list">
-          <li class="menu-item active">
-            <a href="/Academy/dashboard" class="nav-link">
-              <span class="nav-icon">❖</span>
-              <span class="nav-text">Dashboard</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="/Academy/courses" class="nav-link">
-              <span class="nav-icon">📚</span>
-              <span class="nav-text">Courses</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-
-    <main class="main-content-wrapper" id="content-area">
-      <div class="page-container">
-        <!-- Route-specific child content mounted here dynamically via AJAX -->
-        <p class="placeholder-text">Main content canvas placeholder</p>
+    <!-- 2B. Right Content Area (Table Cell) -->
+    <div class="content-right" style="display: table-cell; vertical-align: top;">
+      <div class="content-right-wrapper">
+        <div id="StudentProfilePESUContent">
+          <!-- SPA content root for nested views -->
+          <div class="spa-content-placeholder">
+            <h2>Welcome to Student Portal</h2>
+            <p>Placeholder content for testing shell adapter isolation.</p>
+          </div>
+        </div>
       </div>
-    </main>
+
+      <!-- Scoped Footer Container -->
+      <footer>
+        <div class="footer-content">
+          <span class="copyright-notice">© PES University Portal. All rights reserved.</span>
+        </div>
+      </footer>
+    </div>
   </div>
-
-  <footer class="footer-wrapper" id="footer">
-    <div class="footer-inner">
-      <span class="copyright-notice">© PES University Portal</span>
-    </div>
-  </footer>
 </body>
 </html>
-
