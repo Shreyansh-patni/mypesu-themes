@@ -36,8 +36,6 @@ export const PopupApp: React.FC = () => {
     try {
       if (typeof browser !== 'undefined' && browser.runtime?.openOptionsPage) {
         browser.runtime.openOptionsPage();
-      } else if (typeof chrome !== 'undefined' && chrome.runtime?.openOptionsPage) {
-        chrome.runtime.openOptionsPage();
       } else {
         window.open('options.html', '_blank');
       }
