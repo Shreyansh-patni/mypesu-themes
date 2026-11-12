@@ -5,7 +5,7 @@
 **Repository / Directory:** `mypesu-themes`  
 **Product Type:** Independent browser extension  
 **Initial Browser Targets:** Google Chrome and Mozilla Firefox (Desktop)  
-**Specification Status:** Stage 5 (BUILD — SLICE 0 FOUNDATION) Complete — Gated for Owner Sign-off  
+**Specification Status:** Stage 5 (BUILD — UI FOUNDATION ADDENDUM) Complete — Gated for Owner Sign-off  
 **Date:** 6 November 2026
 
 ---
@@ -61,13 +61,14 @@
 ### Preparation Deliverables (Stage 4)
 - `17_REPOSITORY_RECONNAISSANCE.md` — Workspace, Git, and environment reconnaissance report, implementation readiness matrix, and Slice 0 scope.
 
-### Build Foundation Deliverables (Stage 5 — Slice 0)
+### Build Foundation Deliverables (Stage 5 — Slice 0 & Addendum 5.1)
 - `18_STAGE5_FOUNDATION_REPORT.md` — Complete verification report for Slice 0: project foundation, dependencies, manifest audit, preference and theme registries, and test results.
+- `19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md` — Verification report for Stage 5.1: shadcn/ui and Tailwind CSS v4 integration, decoupled extension UI appearance mode, and appearance controls.
 
 ---
 
 ## 5. Current Gate & Next Immediate Action
 
-* **Current Status:** Stage 5 (BUILD: Slice 0 — Project Foundation) is complete.
-* **Next Action:** The product owner reviews [18_STAGE5_FOUNDATION_REPORT.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/18_STAGE5_FOUNDATION_REPORT.md). Once approved, proceed to **Stage 6 (INTEGRATE: Slice 6.1 — Monochrome Shell Adapter)**.
-* **Strict Rule:** DO NOT implement portal DOM styling, live preview, or third-party component libraries until authorized by the owner.
+* **Current Status:** Stage 5 (BUILD: Foundation & Extension UI Addendum) is complete.
+* **Next Action:** The product owner reviews [19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md). Once approved, proceed to **Stage 6 (INTEGRATE: Slice 6.1 — Monochrome Shell Adapter)**.
+* **Strict Rule:** DO NOT implement portal DOM styling, live preview, or page adapters until authorized by the owner.

@@ -22,5 +22,6 @@ Before proposing or implementing any changes, agents must consult the following 
 - **Local-First Privacy:** All preferences stored exclusively in `browser.storage.local`. Zero remote API calls, analytics, telemetry, or external fonts/assets.
 - **Minimal Permissions:** Manifest permissions restricted strictly to `["storage"]` and host match `["https://www.pesuacademy.com/*"]`. Never introduce `tabs`, `cookies`, `scripting`, `webRequest`, or `<all_urls>`.
 - **Safe Fallback:** If preference resolution fails or errors occur, leave the native portal appearance completely unstyled. Never inject partial styles.
+- **UI Architecture:** Extension-owned interfaces (Popup, Options) use **shadcn/ui** and **Tailwind CSS v4** (`@tailwindcss/vite`). Extension UI appearance (`extensionUiAppearance`) is strictly decoupled from portal theme appearance (`themeId`, `appearanceMode`).
 - **Windows Tooling Rule:** Always invoke package managers via `.cmd` (e.g. `pnpm.cmd`, `npm.cmd`).
 

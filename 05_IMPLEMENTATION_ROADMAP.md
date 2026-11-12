@@ -62,20 +62,22 @@
 * **Status:** **COMPLETE** (Report delivered in `17_REPOSITORY_RECONNAISSANCE.md`).
 * **Key Achievements:** Verified workspace root, confirmed tool versions (Node `v26.7.0`, pnpm `11.23.0`, Git `2.55`), confirmed zero premature code/scaffolding, established implementation readiness matrix.
 
-### Stage 5 — Build: Shared Extension Foundation (Slice 0)
-* **Status:** **SLICE 0 COMPLETE / GATED FOR OWNER REVIEW**
-* **Objective:** Scaffold clean, minimal WXT extension targeting Chrome and Firefox under the Zero-Background Architecture.
+### Stage 5 — Build: Shared Extension Foundation (Slice 0 & Addendum 5.1)
+* **Status:** **STAGE 5 COMPLETE (FOUNDATION & UI ADDENDUM) / GATED FOR OWNER REVIEW**
+* **Objective:** Scaffold clean, minimal WXT extension targeting Chrome and Firefox under the Zero-Background Architecture, extended with shadcn/ui and Tailwind CSS for extension-owned surfaces.
 * **Deliverables:**
   - WXT project foundation targeting Chrome MV3 and Firefox MV3 (`wxt.config.ts`).
   - Git initialized with `.gitignore` and developer guidelines (`AGENTS.md`).
   - Strict TypeScript configuration (`tsconfig.json`) and Vitest configuration (`vitest.config.ts`).
-  - Minimal foundation shells for Popup (`entrypoints/popup/`) and Options (`entrypoints/options/`).
+  - shadcn/ui and Tailwind CSS v4 integration (`@tailwindcss/vite`, `src/styles/globals.css`, `src/lib/utils.ts`).
+  - Decoupled `extensionUiAppearance` preference (`light`, `dark`, `system`) with reactive theme switching hook (`useExtensionUiTheme`).
+  - Functional appearance control in Options using shadcn/ui Select; synchronized across Popup.
   - Type-safe `browser.storage.local` preference provider with Zod validation (`src/core/preferences/`).
   - Typed theme registry for Monochrome and Apple-Inspired themes (`src/core/theme-registry/`).
   - Inert content script shell (`entrypoints/pesu.content/`) scoped strictly to `https://www.pesuacademy.com/*`.
-  - Comprehensive unit test suite (16 tests in 3 files) passing 100%.
+  - Comprehensive unit test suite (19 tests in 3 files) passing 100%.
   - Production builds verified for Chrome MV3 (`.output/chrome-mv3`) and Firefox MV3 (`.output/firefox-mv3`).
-* **Gate:** Owner review of `18_STAGE5_FOUNDATION_REPORT.md` before proceeding to Slice 1.
+* **Gate:** Owner review of `19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md` before proceeding to Stage 6.
 
 ### Stage 6 — Integrate: Theme Engine & Core Page Adapters
 * **Status:** **PENDING STAGE 5 APPROVAL & MANUAL SELECTOR VERIFICATION**

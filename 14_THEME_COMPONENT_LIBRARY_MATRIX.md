@@ -39,20 +39,20 @@ A fundamental architectural principle of MyPESU Themes is the strict separation 
 
 ## 2. Theme-to-Library Compatibility Matrix
 
-In accordance with owner guidance, theme-specific UI libraries will be provided by the product owner for individual theme packs. Because specific packages or URLs were not supplied with this upload, they are marked as **`OWNER_INPUT_REQUIRED`**:
+The product owner has explicitly approved **shadcn/ui** and **Tailwind CSS v4** (`@tailwindcss/vite`) for all extension-owned interfaces (`DEC-14`). The framework provides accessible Radix primitives, zero runtime CSS-in-JS overhead, and full support for independent Light/Dark/System appearance modes:
 
 | Evaluation Criterion | Theme A: Monochrome | Theme B: Apple-Inspired | Future Theme Packs (V2) |
 | :--- | :---: | :---: | :---: |
-| **Owner-Supplied Package / URL** | `OWNER_INPUT_REQUIRED` | `OWNER_INPUT_REQUIRED` | `OWNER_INPUT_REQUIRED` |
-| **Current V1 Working Baseline** | Clean headless React shell with scoped CSS | Clean headless React shell with scoped CSS | Theme UI Adapter contract |
-| **Framework Target** | React 18 / 19 | React 18 / 19 | React 18 / 19 |
-| **TypeScript Compatibility** | Mandatory strict types | Mandatory strict types | Mandatory strict types |
-| **Styling Paradigm** | CSS Modules / Scoped Tailwind | CSS Modules / Scoped Tailwind | Scoped CSS / CSS-in-JS |
-| **Accessibility (a11y)** | WCAG 2.2 AA (Keyboard + Focus) | WCAG 2.2 AA (Keyboard + Focus) | WCAG 2.2 AA compliant |
-| **License Permissibility** | MIT / Apache 2.0 required | MIT / Apache 2.0 required | Open source license required |
-| **Extension CSP Compliance** | No `eval()`, zero inline scripts | No `eval()`, zero inline scripts | No `eval()` |
-| **Bundle Size Budget** | `< 250 KB` gzipped | `< 250 KB` gzipped | `< 300 KB` gzipped |
-| **CSS Leakage Prevention** | Shadow DOM for floating UI | Shadow DOM for floating UI | Shadow DOM |
+| **Approved Component Architecture** | **shadcn/ui (Radix Primitives)** | **shadcn/ui (Radix Primitives)** | shadcn/ui modular adapter |
+| **Styling Engine** | **Tailwind CSS v4 (`@tailwindcss/vite`)** | **Tailwind CSS v4 (`@tailwindcss/vite`)** | Tailwind CSS v4 |
+| **Framework Target** | React 19 (`react@19.3.1`) | React 19 (`react@19.3.1`) | React 19 |
+| **TypeScript Compatibility** | Strict types (`typescript@5.9.3`) | Strict types (`typescript@5.9.3`) | Mandatory strict types |
+| **Styling Paradigm** | Tailwind utility classes + CSS vars | Tailwind utility classes + CSS vars | Utility classes + CSS vars |
+| **Accessibility (a11y)** | WCAG 2.2 AA (Built-in ARIA & Focus) | WCAG 2.2 AA (Built-in ARIA & Focus) | WCAG 2.2 AA compliant |
+| **License Permissibility** | MIT (Permissive) | MIT (Permissive) | MIT / Apache 2.0 required |
+| **Extension CSP Compliance** | Zero `eval()`, zero inline scripts | Zero `eval()`, zero inline scripts | No `eval()` |
+| **Bundle Size Impact** | ~18 KB CSS; tree-shaken JS | ~18 KB CSS; tree-shaken JS | `< 250 KB` gzipped |
+| **CSS Leakage Prevention** | Isolated extension origin / Shadow DOM | Isolated extension origin / Shadow DOM | Shadow DOM |
 
 ---
 

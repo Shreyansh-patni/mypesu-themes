@@ -16,6 +16,12 @@ The extension-owned user interface consists of two distinct surfaces:
 2. **Theme Studio Options Page (`options/`):** A full-screen canvas designed for in-depth customization, live preview management, per-page overrides, accessibility diagnostics, and preference backup.
 3. **In-Tab Live Preview Bar (Shadow DOM):** A floating, non-intrusive preview controller mounted directly in the active portal tab during live preview sessions.
 
+### 1.1 Decoupled Appearance Architecture: Extension UI vs Portal Theme
+The extension implements two strictly decoupled appearance models:
+1. **Extension UI Appearance (`extensionUiAppearance`):** Controls the color scheme (`light`, `dark`, `system`) of the Popup and Options / Theme Studio interface itself. Built with shadcn/ui and Tailwind CSS v4. Synchronized reactively across extension views via `browser.storage.onChanged` and media query listeners.
+2. **PESU Portal Theme Appearance (`appearanceMode` & `themeId`):** Controls how the official university portal (`https://www.pesuacademy.com/*`) is visually restyled.
+*Architectural Invariant:* Changing the Extension UI appearance never alters the portal's theme mode, and customizing the portal never unexpectedly shifts the extension UI's appearance. Each has its own dedicated, typed preference.
+
 ---
 
 ## 2. Browser Action Popup (`popup/`) — Responsive Specification
