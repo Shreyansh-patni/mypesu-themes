@@ -286,3 +286,93 @@ export function createMockShellDocument(): MockDocument {
 
   return doc;
 }
+
+/**
+ * Creates a structural DOM tree corresponding to the verified portal shell + dashboard fixture.
+ */
+export function createMockDashboardDocument(): MockDocument {
+  const doc = createMockShellDocument();
+  const spaContent = doc.getElementById('StudentProfilePESUContent');
+  if (!spaContent) return doc;
+
+  // Clear any existing child in spaContent
+  spaContent.children = [];
+
+  // 1. Announcements Carousel Widget
+  const carousel = doc.createElement('div');
+  carousel.setAttribute('id', 'announcements-carousel');
+  carousel.setAttribute('class', 'carousel slide');
+
+  const indicators = doc.createElement('ol');
+  indicators.setAttribute('class', 'carousel-indicators');
+  const ind1 = doc.createElement('li');
+  ind1.setAttribute('class', 'active');
+  indicators.appendChild(ind1);
+  carousel.appendChild(indicators);
+
+  const inner = doc.createElement('div');
+  inner.setAttribute('class', 'carousel-inner');
+  const itemActive = doc.createElement('div');
+  itemActive.setAttribute('class', 'item active');
+  const imgActive = doc.createElement('img');
+  imgActive.setAttribute('src', 'slide1.png');
+  itemActive.appendChild(imgActive);
+  inner.appendChild(itemActive);
+  carousel.appendChild(inner);
+
+  const leftControl = doc.createElement('a');
+  leftControl.setAttribute('class', 'left carousel-control');
+  leftControl.setAttribute('href', '#announcements-carousel');
+  leftControl.setAttribute('data-slide', 'prev');
+  const rightControl = doc.createElement('a');
+  rightControl.setAttribute('class', 'right carousel-control');
+  rightControl.setAttribute('href', '#announcements-carousel');
+  rightControl.setAttribute('data-slide', 'next');
+  carousel.appendChild(leftControl);
+  carousel.appendChild(rightControl);
+
+  spaContent.appendChild(carousel);
+
+  // 2. Events & Announcements Section
+  const infoWrapper = doc.createElement('div');
+  infoWrapper.setAttribute('class', 'info-content-wrapper');
+
+  const eventsWrapper = doc.createElement('div');
+  eventsWrapper.setAttribute('class', 'events-announcements');
+
+  const announcementsContent = doc.createElement('div');
+  announcementsContent.setAttribute('class', 'info-contents announcements');
+
+  const announcementsInner = doc.createElement('div');
+  announcementsInner.setAttribute('class', 'announcements-inner');
+
+  // Repeated announcement rows
+  for (let i = 1; i <= 2; i++) {
+    const item = doc.createElement('div');
+    item.setAttribute('class', 'anc-item');
+
+    const icon = doc.createElement('div');
+    icon.setAttribute('class', 'anc-icon');
+
+    const text = doc.createElement('div');
+    text.setAttribute('class', 'anc-text');
+    const title = doc.createElement('span');
+    title.setAttribute('class', 'anc-title');
+    text.appendChild(title);
+
+    const date = doc.createElement('div');
+    date.setAttribute('class', 'published-date text-right');
+
+    item.appendChild(icon);
+    item.appendChild(text);
+    item.appendChild(date);
+    announcementsInner.appendChild(item);
+  }
+
+  announcementsContent.appendChild(announcementsInner);
+  eventsWrapper.appendChild(announcementsContent);
+  infoWrapper.appendChild(eventsWrapper);
+  spaContent.appendChild(infoWrapper);
+
+  return doc;
+}

@@ -234,7 +234,7 @@ export const DashboardAdapter: PageAdapter = {
     const effectiveMode = resolveEffectiveMode(preferences.appearanceMode);
     const css = generateMonochromeDashboardCss(
       effectiveMode,
-      preferences.layoutDensity,
+      preferences.density,
       preferences.fontScale
     );
 
