@@ -45,6 +45,22 @@ export const OptionsApp: React.FC = () => {
   });
   const [isResetDialogOpen, setIsResetDialogOpen] = useState<boolean>(false);
 
+  // Auto-scroll support for visual verification / deep-links
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const scrollParam = new URLSearchParams(window.location.search).get('scroll');
+      if (scrollParam) {
+        const timer = setTimeout(() => {
+          const main = document.querySelector('main');
+          if (main) {
+            main.scrollTop = parseInt(scrollParam, 10) || 350;
+          }
+        }, 150);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [activeSection]);
+
   const {
     preferences,
     loading,

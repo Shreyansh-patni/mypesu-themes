@@ -5,7 +5,7 @@
 **Repository / Directory:** `mypesu-themes`  
 **Product Type:** Independent browser extension  
 **Initial Browser Targets:** Google Chrome and Mozilla Firefox (Desktop)  
-**Specification Status:** Stage 6A (INTEGRATE — EXTENSION UI) Complete — Gated for Owner Sign-off  
+**Specification Status:** Stage 6A.1 (INTEGRATE — SCROLLBAR POLISH) Complete — Gated for Owner Sign-off  
 **Date:** 6 November 2026
 
 ---
@@ -67,13 +67,14 @@
 - `19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md` — Verification report for Stage 5.1: shadcn/ui and Tailwind CSS v4 integration, decoupled extension UI appearance mode, and appearance controls.
 - `20_STAGE5_ICON_INTEGRATION_REPORT.md` — Complete verification report for official black-and-white compass icon integration across Chrome and Firefox MV3.
 
-### Extension UI Deliverables (Stage 6A)
+### Extension UI Deliverables (Stage 6A & 6A.1 Polish)
 - `21_STAGE6A_EXTENSION_UI_REPORT.md` — Complete verification report for Stage 6A: production-quality Popup and Theme Studio Options page, independent appearance systems, live storage sync, verified screenshots, and dual-target builds.
+- `22_STAGE6A_SCROLLBAR_POLISH_REPORT.md` — Complete verification report for Stage 6A.1: custom slimline scrollbar design, dual-mode tokens, Chrome and Firefox CSS properties, and overflow verification.
 
 ---
 
 ## 5. Current Gate & Next Immediate Action
 
-* **Current Status:** Stage 6A (INTEGRATE: Production-Quality Extension UI) is complete.
-* **Next Action:** The product owner reviews [21_STAGE6A_EXTENSION_UI_REPORT.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/21_STAGE6A_EXTENSION_UI_REPORT.md). Once approved, proceed to **Stage 6B (INTEGRATE: Portal Visual Adapters & CSS Injection)**.
+* **Current Status:** Stage 6A.1 (INTEGRATE: Extension UI Custom Scrollbar Polish) is complete.
+* **Next Action:** The product owner reviews [22_STAGE6A_SCROLLBAR_POLISH_REPORT.md](file:///c:/Users/shrey/Downloads/mypesu%20themes/22_STAGE6A_SCROLLBAR_POLISH_REPORT.md). Once approved, proceed to **Stage 6B (INTEGRATE: Portal Visual Adapters & CSS Injection)**.
 * **Strict Rule:** DO NOT implement portal DOM styling, live preview, or page adapters until authorized by the owner.

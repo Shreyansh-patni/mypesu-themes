@@ -80,8 +80,8 @@
 * **Gate:** Owner review of `19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md` before proceeding to Stage 6.
 
 ### Stage 6 — Integrate: Extension UI & Portal Page Adapters
-* **Status:** **STAGE 6A COMPLETE / GATED FOR OWNER REVIEW (STAGE 6B PENDING)**
-* **Objective:** Implement production-quality extension UI (Stage 6A) followed by portal DOM page adapters and CSS injection engine (Stage 6B).
+* **Status:** **STAGE 6A & 6A.1 COMPLETE / GATED FOR OWNER REVIEW (STAGE 6B PENDING)**
+* **Objective:** Implement production-quality extension UI (Stage 6A), custom scrollbar polish (Stage 6A.1), followed by portal DOM page adapters and CSS injection engine (Stage 6B).
 * **Stage 6A Deliverables (Extension UI — COMPLETE):**
   - Fluid, responsive Browser Action Popup (320px–400px fluid, ~580px max-height) with active theme selection, portal appearance segmented controls, quick readability toggles, and direct Theme Studio shortcut.
   - Full-screen Theme Studio Options page with Apple-style navigation rail (Overview, Themes, Appearance, Preferences, About).
@@ -92,13 +92,20 @@
   - Reactive cross-context synchronization between Popup and Options via `browser.storage.onChanged`.
   - Comprehensive unit test suite expanded to 25 tests across 4 test suites; 100% passing.
   - Production Chrome MV3 and Firefox MV3 builds verified; 5 genuine screenshots captured.
+* **Stage 6A.1 Deliverables (Custom Scrollbar Polish — COMPLETE):**
+  - Refined, slim 8px custom scrollbar design across all scrollable containers in Popup and Theme Studio.
+  - Fully rounded 9999px pill thumb with subtle neutral track and smooth hover transitions.
+  - Dynamic dual-mode scrollbar tokens (`--scrollbar-track`, `--scrollbar-thumb`, `--scrollbar-thumb-hover`) following `extensionUiAppearance` in Light and Dark modes.
+  - WebKit pseudo-elements (`::-webkit-scrollbar*`) for Chromium and standard properties (`scrollbar-width`, `scrollbar-color`) for Firefox.
+  - Respects `@media (prefers-reduced-motion: reduce)` by disabling transitions.
+  - Verified with 5 genuine Chrome-rendered screenshots in `asset/screenshots/`.
 * **Stage 6B Deliverables (Portal Visual Adapters & CSS Injection — NEXT):**
   - Prerequisite: Owner executes manual evidence collection protocol on authorized portal and verifies provisional selectors.
   - Slice 6.1: Monochrome Light & Dark CSS injection on Global Portal Shell.
   - Slice 6.2: In-tab Live Preview, Apply, and Cancel/Revert state machine.
   - Slice 6.3: Apple-Inspired Theme Pack integration with Action Blue (`#0066cc`).
   - Slice 6.4: Student Dashboard and Course Materials page adapters.
-* **Gate:** Owner review of `21_STAGE6A_EXTENSION_UI_REPORT.md` before Stage 6B authorization.
+* **Gate:** Owner review of `22_STAGE6A_SCROLLBAR_POLISH_REPORT.md` before Stage 6B authorization.
 
 ### Stage 7 — Verify: Independent Test Ladder & Pilot
 * **Status:** **PENDING STAGE 6 APPROVAL**

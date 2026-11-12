@@ -150,3 +150,4 @@ Visual QA test cases represent **test specifications** to be executed once appli
 | **VQA-10** | **Course Materials**| Monochrome Light & Dark | All 6 viewports | Table alternate rows render in `#FFFFFF`/`#FAFAFA` (Light); download buttons distinct. | **NOT RUN (STAGE 6B PENDING)** |
 | **VQA-11** | **Course Materials**| Apple Light & Dark | All 6 viewports | Accordions expand/collapse smoothly; table padding reflects selected density mode. | **NOT RUN (STAGE 6B PENDING)** |
 | **VQA-12** | **Revert / Reset** | Cancel Preview & Reset All | `1440px` | Automated pixel diff comparison confirms active portal matches baseline (VQA-01) with 0% diff. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-13** | **Extension Scrollbars** | Light & Dark Mode Scrollbars | Popup & Options Viewports | Custom 8px slim scrollbars render with rounded pill thumb; track and thumb distinguishable; no layout shift; native scrolling preserved. | **VERIFIED PASS (Stage 6A.1)** |

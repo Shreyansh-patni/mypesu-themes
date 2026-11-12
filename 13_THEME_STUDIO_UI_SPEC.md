@@ -139,3 +139,32 @@ Evaluated on a reference mid-tier desktop environment (Quad-core CPU @ 2.5GHz, 8
 * **Cold-Start FOUC Window:** Target median (p50) `< 100ms`, 95th percentile (p95) `< 200ms`. Hard failure threshold: `> 400ms`.
 * **MutationObserver Script Time:** Maximum callback execution time `< 16ms` (1 frame at 60Hz), throttled to 1 call per 150ms window.
 * **Storage Read/Write Overhead:** Target median (p50) `< 15ms`, 95th percentile (p95) `< 30ms`.
+
+---
+
+## 6. Extension UI Custom Scrollbar Specification (Stage 6A.1 Polish)
+
+The extension-owned user interface (Popup and Theme Studio) employs a custom, refined scrollbar system designed to replace default browser scrollbars with a minimal, neutral aesthetic matching the extension's brand identity.
+
+### 6.1 Architectural Rules & Token Contracts
+1. **Scope:** Applied strictly to extension-owned surfaces (Popup scroll container, Options main canvas). **Zero portal styling injection.**
+2. **Appearance Coupling:** Follows `extensionUiAppearance` (Light / Dark / System). Completely decoupled from the selected portal theme.
+3. **Pure CSS Implementation:** Zero JavaScript scrollbar dependencies; preserves native touch, wheel, keyboard, and accessibility scrolling.
+4. **Dimensions & Geometry:**
+   - Width: `8px` (slimline desktop presentation).
+   - Thumb Shape: `border-radius: 9999px` (fully rounded pill).
+   - Inset: `border: 1px solid transparent; background-clip: padding-box;`.
+   - Scrollbar Buttons / Arrows: `display: none;` (uncluttered, modern).
+5. **Color Tokens:**
+   - **Light Mode:**
+     - `--scrollbar-track`: `rgba(0, 0, 0, 0.03)` (subtle light neutral).
+     - `--scrollbar-thumb`: `rgba(0, 0, 0, 0.22)` (medium neutral gray).
+     - `--scrollbar-thumb-hover`: `rgba(0, 0, 0, 0.38)` (darker neutral gray).
+   - **Dark Mode:**
+     - `--scrollbar-track`: `rgba(255, 255, 255, 0.03)` (subtle dark neutral).
+     - `--scrollbar-thumb`: `rgba(255, 255, 255, 0.26)` (medium-light neutral gray).
+     - `--scrollbar-thumb-hover`: `rgba(255, 255, 255, 0.44)` (brighter neutral gray).
+6. **Cross-Browser Engine Rules:**
+   - **Chromium / WebKit:** `::-webkit-scrollbar`, `::-webkit-scrollbar-track`, `::-webkit-scrollbar-thumb`, `::-webkit-scrollbar-thumb:hover`.
+   - **Mozilla Gecko (Firefox):** `scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);`.
+7. **Reduced Motion:** When `@media (prefers-reduced-motion: reduce)` is active, thumb hover transitions are disabled (`transition: none`).
