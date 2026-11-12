@@ -101,22 +101,30 @@ export interface PageAdapter {
 ### 4.1 Global Portal Shell Adapter (`shell`)
 * **ID:** `shell`
 * **Name:** Global Navigation & Shell
-* **Status:** `PROVISIONAL` (Awaiting Owner Manual Inspection)
-* **Route Pattern:** `^/Academy/.*$` (Active across all authenticated sub-routes).
-* **Provisional Target Selectors:**
-  - Header Container: `#header` / `.navbar` *(PROVISIONAL)*
-  - Navigation Sidebar: `#sidebar` / `.menu-wrapper` *(PROVISIONAL)*
-  - Menu Items: `.menu-item` / `.nav-link` *(PROVISIONAL)*
-  - Footer Container: `.footer` *(PROVISIONAL)*
-* **Safe Styling Scope:**
-  - Top navigation bar background (`--pas-surface-raised`).
-  - Sidebar drawer background, menu item typography, hover/active states.
-  - User identity badge container background and borders.
-  - Page footer container background and copyright text color.
+* **Status:** `VERIFIED (Stage 6B.1 Monochrome Shell)`
+* **Host & Route Gating:** Host `www.pesuacademy.com`, Route Pattern `/^\/Academy\/s\/studentProfilePESU(?:\/.*)?$/`
+* **Verified Structural Selectors (Stage 6B.1):**
+  - Top Navigation Bar: `nav#pge_menu` (count: 1)
+  - Scoped Header Wrapper: `nav#pge_menu .container-fluid header` (count: 1)
+  - Legacy Table Layout Wrapper: `.content-wrapper` (`display: table !important;`, count: 1)
+  - Left Sidebar Cell: `.menu-left` (`display: table-cell !important;`, count: 1)
+  - Sidebar Navigation List: `#studentProfilePESUHomeMenu` (count: 1)
+  - Right Content Cell: `.content-right` (`display: table-cell !important;`, count: 1)
+  - Inner Content Canvas Wrapper: `.content-right .content-right-wrapper` (count: 1)
+  - SPA Content Root: `#StudentProfilePESUContent` (count: 1)
+  - Scoped Footer Container: `.content-right footer` (count: 1)
+* **Safe Styling Scope (Monochrome):**
+  - Nav bar background (`--pas-surface-raised`), border (`--pas-border`).
+  - Scoped header background and text colors.
+  - Table-based layout display preservation (`table` / `table-cell`).
+  - Sidebar cell background (`--pas-surface`) and border-right (`--pas-border`).
+  - Right content cell background (`--pas-canvas`).
+  - Scoped footer background (`--pas-surface-raised`) and border-top (`--pas-border`).
 * **Protected & Excluded Elements:**
-  - `img.university-logo` *(PROVISIONAL)*: Official university crest/logo dimensions and aspect ratio must remain untouched.
-  - `.notification-badge` *(PROVISIONAL)*: Notification count numbers and alert badges must retain distinct alert colors.
-  - Logout action button click listener and form action targets.
+  - `img.university-logo`, `.navbar-brand img`: Aspect ratio preserved, zero CSS inversion.
+  - `#notification-counter`, `.notification-badge`: Notification counter contents and click handlers.
+  - User profile menu and logout action buttons (`.btn-logout`).
+  - `#StudentProfilePESUContent`: Inner SPA content remains unstyled by Shell adapter.
 
 ### 4.2 Student Dashboard Adapter (`dashboard`)
 * **ID:** `dashboard`
