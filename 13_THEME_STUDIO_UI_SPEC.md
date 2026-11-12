@@ -45,25 +45,28 @@ The extension implements two strictly decoupled appearance models:
 
 ```text
 ┌──────────────────────────────────────────────┐
-│  MyPESU Themes                 [⚙ Options]   │
+│  [Logo] MyPESU Themes          [⚙ Options]   │
 │  Your Academy. Your Style.                   │
 ├──────────────────────────────────────────────┤
-│  STATUS: ● Active on pesuacademy.com         │
+│  STATUS: Local preferences active.           │
+│  Portal styling engine connects in Stage 6B. │
 ├──────────────────────────────────────────────┤
-│  APPEARANCE MODE                             │
-│  [  ☀ Light  ] [  ☾ Dark  ] [  💻 System  ]  │
-├──────────────────────────────────────────────┤
-│  ACTIVE THEME                                │
+│  ACTIVE PORTAL THEME                         │
 │  ┌──────────────────┐  ┌──────────────────┐  │
 │  │   MONOCHROME     │  │  APPLE-INSPIRED  │  │
 │  │   [Active ✓]     │  │   [Select]       │  │
+│  │   Light & Dark   │  │   Light & Dark   │  │
+│  │   Swatches       │  │   Swatches       │  │
 │  └──────────────────┘  └──────────────────┘  │
 ├──────────────────────────────────────────────┤
-│  QUICK READABILITY CONTROLS                  │
-│  Text Scale:    [ 100% ]  [ 110% ]  [ 120% ] │
-│  Table Density: [ Comfortable ]  [ Compact ] │
+│  PORTAL APPEARANCE                           │
+│  [  💻 System  ] [  ☀ Light  ] [  ☾ Dark  ]  │
 ├──────────────────────────────────────────────┤
-│  [ Open Full Theme Studio & Live Preview → ] │
+│  QUICK READABILITY CONTROLS                  │
+│  Table Density: [ Comfortable ]  [ Compact ] │
+│  Text Scale:    [ 100% ]  [ 110% ]  [ 120% ] │
+├──────────────────────────────────────────────┤
+│  [ Open Full Theme Studio & Options → ]      │
 └──────────────────────────────────────────────┘
 ```
 

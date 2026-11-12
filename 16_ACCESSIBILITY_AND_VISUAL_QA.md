@@ -138,15 +138,15 @@ Visual QA test cases represent **test specifications** to be executed once appli
 
 | Test Case ID | Target Surface | Theme & Mode Specified | Tested Viewports | Acceptance Condition (Specification) | Verification Status |
 | :--- | :--- | :--- | :--- | :--- | :---: |
-| **VQA-01** | **Baseline Portal** | Native PESU Academy (No Extension) | All 6 viewports | Capture reference baseline screenshots of Shell, Dashboard, and Courses. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-02** | **Browser Action Popup** | Monochrome Light & Dark | `320px` to `400px` width | Content fluid; no horizontal scrollbar; text legible; segmented controls wrap cleanly. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-03** | **Browser Action Popup** | Apple Light & Dark | `320px` to `400px` width | Action Blue accents visible; no text truncation on mode toggles; touch targets >= 44px. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-04** | **Options Page** | All 4 Theme Combinations | `768px`, `1024px`, `1440px` | Left rail navigation collapses cleanly under 768px; gallery cards wrap without clipping. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-05** | **Live Preview Bar**| All 4 Theme Combinations | `1024px`, `1440px` | Floating Shadow DOM bar mounts cleanly; does not obscure portal navigation or download links. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-06** | **Global Shell** | Monochrome Light & Dark | All 6 viewports | University logo aspect ratio preserved; sidebar drawer toggles smoothly; text contrast >= 4.5:1. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-07** | **Global Shell** | Apple Light & Dark | All 6 viewports | Navigation active indicator displays `#0066cc` / `#2997ff`; header background seamless. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-08** | **Dashboard** | Monochrome Light & Dark | `768px`, `1024px`, `1440px` | Metric cards align in clean grid; announcement timestamps satisfy >= 4.5:1 contrast. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-09** | **Dashboard** | Apple Light & Dark | `768px`, `1024px`, `1440px` | Apple card radius (11px) applied; announcement links render in Action Blue with underline hover. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-10** | **Course Materials**| Monochrome Light & Dark | All 6 viewports | Table alternate rows render in `#FFFFFF`/`#FAFAFA` (Light); download buttons distinct. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-11** | **Course Materials**| Apple Light & Dark | All 6 viewports | Accordions expand/collapse smoothly; table padding reflects selected density mode. | **NOT RUN (TEST SPECIFICATION)** |
-| **VQA-12** | **Revert / Reset** | Cancel Preview & Reset All | `1440px` | Automated pixel diff comparison confirms active portal matches baseline (VQA-01) with 0% diff. | **NOT RUN (TEST SPECIFICATION)** |
+| **VQA-01** | **Baseline Portal** | Native PESU Academy (No Extension) | All 6 viewports | Capture reference baseline screenshots of Shell, Dashboard, and Courses. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-02** | **Browser Action Popup** | Monochrome Light & Dark | `320px` to `400px` width | Content fluid; no horizontal scrollbar; text legible; segmented controls wrap cleanly. | **VERIFIED PASS (Stage 6A)** |
+| **VQA-03** | **Browser Action Popup** | Apple Light & Dark | `320px` to `400px` width | Action Blue accents visible; no text truncation on mode toggles; touch targets >= 44px. | **VERIFIED PASS (Stage 6A)** |
+| **VQA-04** | **Options Page** | All 4 Theme Combinations | `768px`, `1024px`, `1440px` | Left rail navigation collapses cleanly under 768px; gallery cards wrap without clipping. | **VERIFIED PASS (Stage 6A)** |
+| **VQA-05** | **Live Preview Bar**| All 4 Theme Combinations | `1024px`, `1440px` | Floating Shadow DOM bar mounts cleanly; does not obscure portal navigation or download links. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-06** | **Global Shell** | Monochrome Light & Dark | All 6 viewports | University logo aspect ratio preserved; sidebar drawer toggles smoothly; text contrast >= 4.5:1. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-07** | **Global Shell** | Apple Light & Dark | All 6 viewports | Navigation active indicator displays `#0066cc` / `#2997ff`; header background seamless. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-08** | **Dashboard** | Monochrome Light & Dark | `768px`, `1024px`, `1440px` | Metric cards align in clean grid; announcement timestamps satisfy >= 4.5:1 contrast. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-09** | **Dashboard** | Apple Light & Dark | `768px`, `1024px`, `1440px` | Apple card radius (11px) applied; announcement links render in Action Blue with underline hover. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-10** | **Course Materials**| Monochrome Light & Dark | All 6 viewports | Table alternate rows render in `#FFFFFF`/`#FAFAFA` (Light); download buttons distinct. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-11** | **Course Materials**| Apple Light & Dark | All 6 viewports | Accordions expand/collapse smoothly; table padding reflects selected density mode. | **NOT RUN (STAGE 6B PENDING)** |
+| **VQA-12** | **Revert / Reset** | Cancel Preview & Reset All | `1440px` | Automated pixel diff comparison confirms active portal matches baseline (VQA-01) with 0% diff. | **NOT RUN (STAGE 6B PENDING)** |

@@ -41,6 +41,8 @@ Every item in this register is classified under one of three statuses:
 | **DEC-15** | **Scope** | Non-Goals & Excluded Utilities | **`RECOMMENDED_PENDING_CONFIRMATION`** | Strict prohibition against academic utilities: no slide downloaders, no SGPA/CGPA calculators, no attendance shortage estimators, no scraping bots, and no workflow automation. | 2026-11-06 |
 | **DEC-16** | **Design QA** | Contrast Standard Target | **`RECOMMENDED_PENDING_CONFIRMATION`** | Adopt **WCAG 2.2 AA** (>= 4.5:1 body, >= 3.0:1 large/UI) as mandatory design release gate across all theme modes. | 2026-11-06 |
 | **DEC-17** | **Distribution** | Firefox Gecko Extension ID & Data Collection | **`CONFIRMED_BY_OWNER`** | Declare `browser_specific_settings.gecko.data_collection_permissions.required = ["none"]`. Stable Gecko ID remains `OWNER_INPUT_REQUIRED` as a signing/release prerequisite; not invented in code. | 2026-11-12 |
+| **DEC-18** | **Branding** | Official Extension Logo & Icons | **`CONFIRMED_BY_OWNER`** | Approved original black-and-white compass logo (`asset/brand/pesu-compass-bw-source.png`). Generated icons at 16, 24, 32, 48, 96, and 128px strictly normalized to pure `#000000` and `#FFFFFF` with 0 grey or colored pixels. | 2026-11-12 |
+| **DEC-19** | **Architecture**| Two Decoupled Appearance Systems | **`CONFIRMED_BY_OWNER`** | Extension UI appearance (`extensionUiAppearance`) is strictly decoupled from portal appearance (`appearanceMode`). Updating one never alters the other. Both persist in `browser.storage.local`. | 2026-11-12 |
 
 ---
 
