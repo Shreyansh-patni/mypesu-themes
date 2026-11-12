@@ -5,7 +5,7 @@
 **Repository / Directory:** `mypesu-themes`  
 **Product Type:** Independent browser extension  
 **Initial Browser Targets:** Google Chrome and Mozilla Firefox (Desktop)  
-**Specification Status:** Stage 5 (BUILD — UI FOUNDATION ADDENDUM) Complete — Gated for Owner Sign-off  
+**Specification Status:** Stage 5 (BUILD — ICON & UI FOUNDATION) Complete — Gated for Owner Sign-off  
 **Date:** 6 November 2026
 
 ---
@@ -19,10 +19,11 @@
 ## 2. Key Approved Source References
 
 1. **Methodology:** *Vibe Coding Engineering: A Professional Guide to Building Software with AI Agents*, Second Edition (2026). Development strictly follows the nine-stage lifecycle with one testable outcome per prompt and explicit owner approval gates.
-2. **Monochrome Theme Source:** Verified 12-step grayscale Light/Dark palette reference image (`jpg(7).jpg`).
-3. **Apple-Inspired Theme Source:** Approved Apple design specification (`DESIGN(2).md` / `DESIGN-apple(3).md`), featuring Action Blue (`#0066cc`), Focus Blue (`#0071e3`), dark link blue (`#2997ff`), and audited accessible secondary text (`#6e6e73`).
-4. **Zero-Background Architecture:** Content scripts synchronize directly with `browser.storage.local` via `storage.onChanged`, eliminating background service worker and event page overhead in V1 (DEC-05).
-5. **Theme UI Libraries:** Kept configurable via a theme UI adapter contract. Specific component libraries are deferred until the owner provides them (DEC-14).
+2. **Official Extension Brand & Icon:** Approved Black & White compass mark (`asset/brand/pesu-compass-bw-source.png`) integrated into standard extension icon sizes (16, 24, 32, 48, 96, 128) with 100% pure black (`#000000`) and pure white (`#FFFFFF`) pixel normalization.
+3. **Monochrome Theme Source:** Verified 12-step grayscale Light/Dark palette reference image (`jpg(7).jpg`).
+4. **Apple-Inspired Theme Source:** Approved Apple design specification (`DESIGN(2).md` / `DESIGN-apple(3).md`), featuring Action Blue (`#0066cc`), Focus Blue (`#0071e3`), dark link blue (`#2997ff`), and audited accessible secondary text (`#6e6e73`).
+5. **Zero-Background Architecture:** Content scripts synchronize directly with `browser.storage.local` via `storage.onChanged`, eliminating background service worker and event page overhead in V1 (DEC-05).
+6. **Extension UI Framework:** Approved shadcn/ui and Tailwind CSS v4 for extension-owned interfaces (Popup, Options), with independent `extensionUiAppearance` decoupling.
 
 ---
 
