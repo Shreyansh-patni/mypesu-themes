@@ -95,6 +95,12 @@ export class MockElement {
         if (tag && el.tagName !== tag.toLowerCase()) return false;
         return el.id === id;
       }
+      // Tag + Class (e.g. img.university-logo)
+      if (target.includes('.')) {
+        const [tag, cls] = target.split('.');
+        if (tag && el.tagName !== tag.toLowerCase()) return false;
+        return el.classList.has(cls);
+      }
       // ID only
       if (target.startsWith('#')) {
         return el.id === target.slice(1);
