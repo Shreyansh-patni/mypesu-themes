@@ -167,3 +167,4 @@ describe('Stage 6A: Extension UI Preference Synchronization & Contracts', () => 
     expect(fallback).toEqual(DEFAULT_PREFERENCES);
   });
 });
+

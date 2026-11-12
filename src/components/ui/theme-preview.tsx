@@ -66,3 +66,4 @@ export function ThemePreviewSwatches({ theme, compact = false }: ThemePreviewSwa
     </div>
   );
 }
+

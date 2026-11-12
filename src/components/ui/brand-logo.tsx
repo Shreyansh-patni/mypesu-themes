@@ -30,3 +30,4 @@ export function BrandLogo({ size = 24, className, ...props }: BrandLogoProps) {
     </div>
   );
 }
+
