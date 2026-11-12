@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { getPreferences, resetPreferences } from '../../core/preferences/storage';
-import { DEFAULT_PREFERENCES, type UserPreferences } from '../../core/types/preferences';
+import { UserPreferences, DEFAULT_PREFERENCES, ExtensionUiAppearance } from '../../core/types/preferences';
+import { useExtensionUiTheme } from '../../hooks/useExtensionUiTheme';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../../components/ui/select';
 
 export const OptionsApp: React.FC = () => {
   const [preferences, setPreferences] = useState<UserPreferences>(DEFAULT_PREFERENCES);
   const [loading, setLoading] = useState(true);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
+  const { appearance, resolvedTheme, setAppearance } = useExtensionUiTheme();
 
   useEffect(() => {
     let mounted = true;
@@ -18,63 +28,89 @@ export const OptionsApp: React.FC = () => {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [appearance]);
 
   const handleReset = async () => {
     const defaults = await resetPreferences();
     setPreferences(defaults);
+    await setAppearance(defaults.extensionUiAppearance);
     setStatusMessage('Preferences reset to defaults.');
     setTimeout(() => setStatusMessage(null), 3000);
   };
 
+  const handleAppearanceChange = async (val: string) => {
+    await setAppearance(val as ExtensionUiAppearance);
+    const updated = await getPreferences();
+    setPreferences(updated);
+  };
+
   return (
-    <div
-      style={{
-        maxWidth: '680px',
-        margin: '40px auto',
-        padding: '24px',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-        fontSize: '14px',
-        lineHeight: '1.6',
-        color: '#171717',
-        backgroundColor: '#FFFFFF',
-        borderRadius: '8px',
-        border: '1px solid #E5E5E5',
-      }}
-    >
-      <header style={{ borderBottom: '1px solid #E5E5E5', paddingBottom: '16px', marginBottom: '24px' }}>
-        <h1 style={{ margin: '0 0 6px 0', fontSize: '20px', fontWeight: 600 }}>MyPESU Themes — Settings</h1>
-        <p style={{ margin: 0, color: '#737373' }}>
-          Theme Studio Foundation Shell (Slice 0). Full interactive customization controls will be delivered in subsequent slices.
+    <div className="max-w-xl mx-auto my-10 p-6 bg-[var(--card)] text-[var(--card-foreground)] rounded-lg border border-[var(--border)] shadow-sm transition-colors duration-200">
+      <header className="border-b border-[var(--border)] pb-4 mb-6">
+        <h1 className="text-xl font-semibold tracking-tight">MyPESU Themes — Settings</h1>
+        <p className="text-sm text-[var(--muted-foreground)] mt-1">
+          Extension UI Foundation (Stage 5.1 Addendum) with shadcn/ui & Tailwind CSS.
         </p>
       </header>
 
-      <section style={{ marginBottom: '24px' }}>
-        <h2 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '12px' }}>Stored Preferences</h2>
+      {/* Extension UI Appearance Setting (Independent from portal theme) */}
+      <section className="mb-6 p-4 rounded-md bg-[var(--muted)]/50 border border-[var(--border)]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 className="text-sm font-semibold">Extension UI Appearance</h2>
+            <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+              Controls the Popup and Options color mode. Independent from portal theme settings.
+            </p>
+          </div>
+          <div className="w-40">
+            <Select value={appearance} onValueChange={handleAppearanceChange}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select appearance" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="system">System (Auto)</SelectItem>
+                <SelectItem value="light">Light</SelectItem>
+                <SelectItem value="dark">Dark</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+        <div className="mt-2 text-xs text-[var(--muted-foreground)]">
+          Current effective UI mode: <span className="font-medium text-[var(--foreground)] capitalize">{resolvedTheme}</span>
+        </div>
+      </section>
+
+      {/* Stored Preferences Summary */}
+      <section className="mb-6">
+        <h2 className="text-base font-semibold mb-3">Stored Configuration Baseline</h2>
         {loading ? (
-          <p style={{ color: '#737373' }}>Loading preferences...</p>
+          <p className="text-sm text-[var(--muted-foreground)]">Loading preferences...</p>
         ) : (
-          <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '16px' }}>
+          <table className="w-full text-sm border-collapse mb-4">
             <tbody>
-              <tr style={{ borderBottom: '1px solid #F5F5F5' }}>
-                <td style={{ padding: '8px 0', color: '#737373', width: '40%' }}>Theme Pack</td>
-                <td style={{ padding: '8px 0', fontWeight: 500 }}>{preferences.themeId}</td>
+              <tr className="border-b border-[var(--border)]">
+                <td className="py-2 text-[var(--muted-foreground)] w-2/5">Extension UI Appearance</td>
+                <td className="py-2 font-medium capitalize">{preferences.extensionUiAppearance}</td>
               </tr>
-              <tr style={{ borderBottom: '1px solid #F5F5F5' }}>
-                <td style={{ padding: '8px 0', color: '#737373' }}>Appearance Mode</td>
-                <td style={{ padding: '8px 0', fontWeight: 500 }}>{preferences.appearanceMode}</td>
+              <tr className="border-b border-[var(--border)]">
+                <td className="py-2 text-[var(--muted-foreground)]">PESU Portal Theme</td>
+                <td className="py-2 font-medium capitalize">{preferences.themeId}</td>
               </tr>
-              <tr style={{ borderBottom: '1px solid #F5F5F5' }}>
-                <td style={{ padding: '8px 0', color: '#737373' }}>Display Density</td>
-                <td style={{ padding: '8px 0', fontWeight: 500 }}>{preferences.density}</td>
+              <tr className="border-b border-[var(--border)]">
+                <td className="py-2 text-[var(--muted-foreground)]">PESU Portal Mode</td>
+                <td className="py-2 font-medium capitalize">{preferences.appearanceMode}</td>
               </tr>
-              <tr style={{ borderBottom: '1px solid #F5F5F5' }}>
-                <td style={{ padding: '8px 0', color: '#737373' }}>Font Scaling</td>
-                <td style={{ padding: '8px 0', fontWeight: 500 }}>{preferences.fontScale}%</td>
+              <tr className="border-b border-[var(--border)]">
+                <td className="py-2 text-[var(--muted-foreground)]">Display Density</td>
+                <td className="py-2 font-medium capitalize">{preferences.density}</td>
+              </tr>
+              <tr className="border-b border-[var(--border)]">
+                <td className="py-2 text-[var(--muted-foreground)]">Font Scaling</td>
+                <td className="py-2 font-medium">{preferences.fontScale}%</td>
               </tr>
               <tr>
-                <td style={{ padding: '8px 0', color: '#737373' }}>Schema Version</td>
-                <td style={{ padding: '8px 0', fontWeight: 500 }}>{preferences.schemaVersion}</td>
+                <td className="py-2 text-[var(--muted-foreground)]">Schema Version</td>
+                <td className="py-2 font-medium">{preferences.schemaVersion}</td>
               </tr>
             </tbody>
           </table>
@@ -82,27 +118,19 @@ export const OptionsApp: React.FC = () => {
 
         <button
           onClick={handleReset}
-          style={{
-            padding: '8px 16px',
-            backgroundColor: '#FAFAFA',
-            border: '1px solid #D4D4D4',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '13px',
-            fontWeight: 500,
-          }}
+          className="px-4 py-2 bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:bg-[var(--secondary)]/80 border border-[var(--border)] rounded-md text-xs font-medium cursor-pointer transition-colors"
         >
           Reset to Factory Defaults
         </button>
 
         {statusMessage && (
-          <p style={{ marginTop: '12px', color: '#262626', fontSize: '13px' }}>{statusMessage}</p>
+          <p className="mt-3 text-xs text-[var(--foreground)]">{statusMessage}</p>
         )}
       </section>
 
-      <footer style={{ borderTop: '1px solid #E5E5E5', paddingTop: '16px', fontSize: '12px', color: '#737373' }}>
-        <p style={{ margin: 0 }}>
-          MyPESU Themes is an independent extension. Presentation only. Never modifies academic records, attendance, or submissions.
+      <footer className="border-t border-[var(--border)] pt-4 text-xs text-[var(--muted-foreground)]">
+        <p className="m-0">
+          MyPESU Themes is an independent extension. Presentation only. Never touches official academic records or credentials.
         </p>
       </footer>
     </div>

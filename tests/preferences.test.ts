@@ -5,11 +5,12 @@ import {
 } from '../src/core/types/preferences';
 
 describe('UserPreferences Schema & Defaults', () => {
-  it('assigns exact PRD defaults for empty object', () => {
+  it('assigns exact PRD & Stage 5.1 defaults for empty object', () => {
     const parsed = UserPreferencesSchema.parse({});
     expect(parsed).toEqual(DEFAULT_PREFERENCES);
     expect(parsed.themeId).toBe('monochrome');
     expect(parsed.appearanceMode).toBe('system');
+    expect(parsed.extensionUiAppearance).toBe('system');
     expect(parsed.density).toBe('comfortable');
     expect(parsed.fontScale).toBe(100);
     expect(parsed.schemaVersion).toBe(1);
@@ -21,6 +22,7 @@ describe('UserPreferences Schema & Defaults', () => {
       schemaVersion: 1,
       themeId: 'apple-inspired',
       appearanceMode: 'dark',
+      extensionUiAppearance: 'light',
       density: 'compact',
       fontScale: 115,
       pageOverrides: {
@@ -32,6 +34,26 @@ describe('UserPreferences Schema & Defaults', () => {
     };
     const parsed = UserPreferencesSchema.parse(custom);
     expect(parsed).toEqual(custom);
+  });
+
+  it('preserves independence between extension UI appearance and portal theme appearance', () => {
+    const parsed = UserPreferencesSchema.parse({
+      appearanceMode: 'dark',             // Portal appearance: Dark
+      extensionUiAppearance: 'light',      // Extension UI: Light
+    });
+    expect(parsed.appearanceMode).toBe('dark');
+    expect(parsed.extensionUiAppearance).toBe('light');
+  });
+
+  it('accepts valid extension UI appearance values', () => {
+    expect(UserPreferencesSchema.parse({ extensionUiAppearance: 'light' }).extensionUiAppearance).toBe('light');
+    expect(UserPreferencesSchema.parse({ extensionUiAppearance: 'dark' }).extensionUiAppearance).toBe('dark');
+    expect(UserPreferencesSchema.parse({ extensionUiAppearance: 'system' }).extensionUiAppearance).toBe('system');
+  });
+
+  it('rejects invalid extension UI appearance values', () => {
+    const result = UserPreferencesSchema.safeParse({ extensionUiAppearance: 'midnight-blue' });
+    expect(result.success).toBe(false);
   });
 
   it('rejects unapproved theme IDs', () => {
@@ -56,4 +78,3 @@ describe('UserPreferences Schema & Defaults', () => {
     expect(result.success).toBe(false);
   });
 });
-
