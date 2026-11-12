@@ -235,7 +235,7 @@ describe('Stage 6B.1: Monochrome Global Shell Adapter', () => {
     // Protected university logo
     const logo = doc.querySelectorAll('img.university-logo')[0];
     expect(logo).not.toBeNull();
-    expect(logo.getAttribute('src')).toBe('logo.png');
+    expect(logo?.getAttribute('src')).toBe('logo.png');
 
     // Protected notification badge
     const notif = doc.getElementById('notification-counter');

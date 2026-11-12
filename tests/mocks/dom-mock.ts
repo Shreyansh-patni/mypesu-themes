@@ -138,7 +138,7 @@ export class MockElement {
 
       if (hasChildCombinator) {
         const parentRule = parts[parts.length - 3];
-        if (!el.parent) return false;
+        if (!el.parent || !parentRule) return false;
         return matchHierarchy(el.parent, parts.slice(0, parts.length - 2));
       } else {
         // Ancestor matching
