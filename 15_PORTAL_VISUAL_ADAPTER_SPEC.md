@@ -42,21 +42,24 @@ The Global Portal Shell encompasses the persistent layout chrome across authenti
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 2.1 Visual Specification:
-* **Visual Hierarchy:** Clean separation between navigation chrome and content canvas. Header and drawer use `--pas-surface-raised` to establish subtle elevation above the `--pas-canvas` page foundation.
+### 2.1 Visual Specification & Layout Architecture:
+* **Verified Table-Based Layout Architecture (Stage 6B.1):**
+  - Outer Wrapper: `.content-wrapper` (`display: table !important; width: 100%;`).
+  - Left Sidebar Column: `.menu-left` (`display: table-cell !important; width: 220px; vertical-align: top;`).
+  - Right Content Column: `.content-right` (`display: table-cell !important; vertical-align: top;`).
+  - *Invariant:* Must NEVER be transformed to CSS flex or grid. Native table layout semantics must be strictly preserved.
+* **Visual Hierarchy:** Clean separation between navigation chrome and content canvas. Header (`nav#pge_menu`) and footer use `--pas-surface-raised` to establish subtle elevation above the `--pas-canvas` page foundation.
 * **Surfaces:**
-  - *Monochrome Light:* Canvas `#FFFFFF`, Header `#F5F5F5`, Sidebar `#FAFAFA`, Border `#E5E5E5`.
-  - *Monochrome Dark:* Canvas `#000000`, Header `#171717`, Sidebar `#0A0A0A`, Border `#262626`.
+  - *Monochrome Light:* Canvas `#FFFFFF`, Header `#F5F5F5`, Sidebar `#FAFAFA`, Border `#E5E5E5`, Text `#171717`.
+  - *Monochrome Dark:* Canvas `#000000`, Header `#171717`, Sidebar `#0A0A0A`, Border `#262626`, Text `#F5F5F5`.
   - *Apple Light:* Canvas `#f5f5f7`, Header `#ffffff`, Sidebar `#fafafc`, Border `#d2d2d7`.
   - *Apple Dark:* Canvas `#000000`, Header `#1d1d1f`, Sidebar `#141416`, Border `#333336`.
-* **Typography:** Navigation labels use `sizeSm` (14px) with medium weight (`500`). Active items use `weightBold` (`700`) with primary text color.
-* **Navigation Behavior:**
-  - Sidebar drawer expands/collapses smoothly via CSS transition (`--pas-durationFast`).
-  - Active navigation item displays an accent left border (`3px solid var(--pas-accent)`).
+* **Typography:** System platform font stack (`-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `Roboto`), base 14px, lineHeight 1.5.
 * **Protected Elements (Do NOT Touch):**
-  - University crest / logo image (`img.university-logo` — provisional). Aspect ratio and dimensions preserved.
-  - Notification alert counter badge contents and click handlers.
-  - Profile dropdown logout action and session termination handlers.
+  - University crest / logo image (`img.university-logo`, `.navbar-brand img`): Aspect ratio and dimensions preserved; zero CSS filter inversion.
+  - Notification alert counter badge (`#notification-counter`, `.notification-badge`): Contents and click handlers untouched.
+  - Profile dropdown logout action (`.btn-logout`): Session termination handlers untouched.
+  - SPA Content Viewport (`#StudentProfilePESUContent`): Inner views untouched by shell adapter.
 
 ---
 
