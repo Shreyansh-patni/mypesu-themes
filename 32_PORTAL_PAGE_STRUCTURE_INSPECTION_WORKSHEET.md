@@ -221,3 +221,4 @@ Navigate to **My Profile**.
 2. Owner performs non-invasive structural inspection using DevTools for target page families.
 3. Owner records verified selectors directly into this document.
 4. Agent implements discrete, verified page adapters in Stage 6B.6+.
+
