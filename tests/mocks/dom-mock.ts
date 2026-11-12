@@ -118,9 +118,7 @@ export class MockElement {
     const matchHierarchy = (el: MockElement, parts: string[]): boolean => {
       if (parts.length === 0) return true;
       const last = parts[parts.length - 1];
-
-      // Handle child combinator ">"
-      if (last === '>') return false;
+      if (!last || last === '>') return false;
 
       let hasChildCombinator = false;
       let targetRule = last;
