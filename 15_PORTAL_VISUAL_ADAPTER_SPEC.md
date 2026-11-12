@@ -96,36 +96,43 @@ The Student Dashboard presents the announcements carousel and the verified campu
 
 ---
 
-## 4. Template 3: Course Materials & Slides Adapter (`courses`)
+## 4. Template 3: Course Materials & Syllabi Adapter (`courses`)
 
-The Course Materials view displays subject accordions, unit syllabus breakdowns, and tabular lists of lecture slide decks and reference notes.
+The Course Materials & Syllabi view presents the course title, unit badges, and a dense tabular view of lecture slide decks, syllabus documents, and learning resources.
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
-│ COURSE MATERIALS: CS301 — ADVANCED ALGORITHMS                          │
+│ .short-title-container                                                 │
+│ [ CS101: Systems Engineering ]  [ Unit 1 — Logic Foundations ]         │
 │                                                                        │
-│ ▼ Unit 1: Graph Traversal & Network Flow               [ 4 Resources ] │
-│ ┌────────────────────────────────────────────────────────────────────┐ │
-│ │ Topic / Lecture Title      Date Uploaded   Format   Action         │ │
-│ ├────────────────────────────────────────────────────────────────────┤ │
-│ │ Lecture 01: DFS & BFS      Aug 15, 2026    PDF      [ Download ⤓ ] │ │
-│ │ Lecture 02: Max-Flow       Aug 20, 2026    PDF      [ Download ⤓ ] │ │
-│ └────────────────────────────────────────────────────────────────────┘ │
+│ table (Verified Visible Materials Table)                               │
+│ ┌───┬───────────────────────────────┬──────┬──────┬───────┬──────┬───┐ │
+│ │ # │ TOPIC / CHAPTER               │ UNIT │ TYPE │ DATE  │SLIDES│...│ │
+│ ├───┼───────────────────────────────┼──────┼──────┼───────┼──────┼───┤ │
+│ │ 1 │ Boolean Algebra & Minimization│Unit 1│Lecture12 Aug │ [📊] │...│ │
+│ ├───┼───────────────────────────────┼──────┼──────┼───────┼──────┼───┤ │
+│ │ 2 │ Combinational Circuit Design  │Unit 1│Notes  14 Aug │ [📄] │...│ │
+│ └───┴───────────────────────────────┴──────┴──────┴───────┴──────┴───┘ │
 │                                                                        │
-│ ▶ Unit 2: Linear Programming                           [ 3 Resources ] │
-│ ▶ Unit 3: Approximation Algorithms                     [ 5 Resources ] │
+│ .info-note-container                                                   │
+│ ℹ️ Note: Course materials and references are synchronized with...       │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 4.1 Visual Specification:
-* **Visual Hierarchy:** Distinct accordion headers for each academic unit, expanding into alternating tabular rows of course files.
-* **Accordions:** Unit headers styled with `--pas-surface-raised` and clean chevron expand/collapse indicators.
-* **Tables:**
-  - Table header: Styled with `--pas-surface-raised`, uppercase tracking, and bold text.
-  - Alternating rows: Alternates between `--pas-surface` and `--pas-canvas` to enhance row scanning.
-  - Padding: Dynamically adjusted via Layout Density (`compact`: 8px vertical padding; `comfortable`: 14px vertical padding).
-* **Protected Elements (Do NOT Touch):**
-  - **Native Slide Download Buttons:** Download buttons, `onclick` handlers, and direct file download URLs must remain completely unblocked and unaltered. The extension customizes button colors and borders only; it never intercepts or overrides file requests.
+### 4.1 Visual Specification (Verified Stage 6B.3):
+* **No Accordions or Cards:** Inspection verified zero visible `.accordion`, `.panel-group`, or `<details>` structures on this view. Styling strictly binds to real observed DOM elements: `.short-title`, `table thead th`, `table tbody tr`, `.topic-cell`, and `.info-note`.
+* **Table Visual Hierarchy:**
+  - Table Header (`thead th`): Elevated surface (`--pas-surface-raised`), bold primary text (`--pas-text`), 2px bottom border divider, uppercase letter-spacing.
+  - Alternating Rows (`tbody tr:nth-child(even)`): Alternates with `--pas-surface` to facilitate horizontal scanning across wide multi-column tables.
+  - Hover Feedback (`tbody tr:hover`): Restrained hover elevation (`--pas-surface-raised`) across safe non-action cells.
+  - Cell Padding: Calibrated dynamically via Layout Density (`compact`: 8px/10px, `comfortable`: 12px/14px).
+  - Borders: Clean monochrome borders (`--pas-border` outer, `--pas-border-subtle` internal gridlines).
+* **Headings & Badges:**
+  - Course / Unit Badges (`.short-title`): Rounded inline-block badges on `--pas-surface-raised` with subtle 1px border.
+  - Footnotes (`.info-note`): Subtle surface background with a 3px accent left-border and muted typography.
+* **Strictly Protected Action Elements (Do NOT Touch):**
+  - Observed action icon classes: `.pesu-icon-play-button`, `.pesu-icon-presentation-graphs`, `.pesu-icon-open-book`, `.pesu-icon-document`, `.pesu-icon-doc-tick`, `.pesu-icon-faq`, `.pesu-icon-list-items`, `.pesu-icon-file`.
+  - All action cells (`td.text-center`) and parent anchors (`<a>`): Aspect ratio, colors, destinations (`href`), event listeners, and download targets remain completely untouched. No downloads are triggered, intercepted, or read.
 
 ---
 

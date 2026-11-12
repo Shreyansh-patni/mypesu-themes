@@ -153,19 +153,35 @@ export interface PageAdapter {
 
 ### 4.3 Course Materials & Syllabi Adapter (`courses`)
 * **ID:** `courses`
-* **Name:** Course Materials & Slides
-* **Status:** `PROVISIONAL` (Awaiting Owner Manual Inspection)
-* **Route Pattern:** `^/Academy/.*course.*$|^/Academy/.*material.*$`
-* **Provisional Target Selectors:**
-  - Materials Table Container: `.materials-table` / `.course-materials-table` *(PROVISIONAL)*
-  - Unit Accordions: `.unit-accordion` / `.panel-group` *(PROVISIONAL)*
-  - Slide Rows: `.slide-row` / `.table-row` *(PROVISIONAL)*
-* **Safe Styling Scope:**
-  - Unit / Topic accordion headers: background (`--pas-surface-raised`), title typography (`--pas-font-family`).
-  - Slide listing tables: alternating row backgrounds (`--pas-surface` / `--pas-canvas`), header backgrounds, row hover highlights.
-  - Table cell padding: dynamic padding based on Layout Density (`compact`: 8px, `comfortable`: 14px).
+* **Name:** Course Materials & Syllabi
+* **Status:** `VERIFIED (Stage 6B.3 Monochrome Courses)`
+* **Host & Route Gating:** Host `www.pesuacademy.com`, Route Pattern `/^\/Academy\/s\/studentProfilePESU(?:\/.*)?$/`
+* **Structural Signature Activation:**
+  - Requires container `#StudentProfilePESUContent` (count: 1)
+  - Requires exactly one unambiguous visible materials table containing `thead th` and `tbody tr`.
+  - Rejects hidden tables (e.g. scratchpads/templates styled with `display: none`).
+  - Requires `.short-title` element(s) within the course content hierarchy.
+  - Conflict check: Rejects activation if dashboard markers (`#announcements-carousel`, `.info-contents.announcements`) are present.
+* **Verified Target Selectors (Stage 6B.3):**
+  - Section Wrapper & Heading Badges: `.course-content-section`, `.short-title-container`, `.short-title`
+  - Materials Table Frame: `table` (subtle border, rounded corners, `overflow: hidden`, preserved table display semantics)
+  - Table Header Hierarchy: `table thead th` (bold typography, uppercase letter-spacing, bottom border divider, surface elevation)
+  - Alternating Row Surfaces: `table tbody tr:nth-child(even)` (subtle alternating grayscale surface)
+  - Row Hover State: `table tbody tr:hover` (restrained hover highlight on safe non-action cells)
+  - Safe Content Cells: `table tbody td:not(.text-center)` and `table tbody td.topic-cell`
+  - Footnotes: `.info-note-container`, `.info-note` (border-left accent bar, muted typography)
 * **Protected & Excluded Elements:**
-  - Download action buttons, onclick listeners, and file format icons. Native download functionality must remain 100% intact.
+  - All action cells (`td.text-center`) and cells containing observed protected action icons:
+    - `.pesu-icon-play-button`
+    - `.pesu-icon-presentation-graphs`
+    - `.pesu-icon-open-book`
+    - `.pesu-icon-document`
+    - `.pesu-icon-doc-tick`
+    - `.pesu-icon-faq`
+    - `.pesu-icon-list-items`
+    - `.pesu-icon-file`
+  - All action anchors (`<a>`), destinations (`href`), event handlers, icon classes, and click targets are 100% excluded from modification.
+  - Zero downloading or reading of slide URLs. Zero mutation of course names, faculty details, or syllabus text.
 
 ---
 
