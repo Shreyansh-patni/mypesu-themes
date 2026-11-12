@@ -35,11 +35,16 @@ export default defineContentScript({
     if (typeof browser !== 'undefined' && browser.storage?.onChanged) {
       browser.storage.onChanged.addListener((changes, areaName) => {
         if (areaName === 'local' && changes[PREFERENCES_STORAGE_KEY]) {
-          const updated = changes[PREFERENCES_STORAGE_KEY].newValue;
-          if (updated) {
-            currentPreferences = updated;
-            runAdapterCycle();
-          }
+          getPreferences()
+            .then((prefs) => {
+              currentPreferences = prefs;
+              runAdapterCycle();
+            })
+            .catch(() => {
+              if (typeof document !== 'undefined') {
+                unmountAllAdapters(document);
+              }
+            });
         }
       });
     }

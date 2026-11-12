@@ -99,7 +99,8 @@ export class MockElement {
       if (target.includes('.')) {
         const [tag, cls] = target.split('.');
         if (tag && el.tagName !== tag.toLowerCase()) return false;
-        return el.classList.has(cls);
+        if (cls) return el.classList.has(cls);
+        return false;
       }
       // ID only
       if (target.startsWith('#')) {
