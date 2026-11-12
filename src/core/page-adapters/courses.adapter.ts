@@ -23,12 +23,20 @@ export const PROTECTED_ACTION_ICONS = [
 /**
  * Checks whether an element is visible in the DOM using standard geometry and computed style checks.
  */
-export function isElementVisible(el: Element): boolean {
+export function isElementVisible(el: any): boolean {
   if (!el) return false;
 
-  // Check inline style or attribute display:none / visibility:hidden
-  if (el instanceof HTMLElement) {
+  // Check inline style or style object
+  if (el.style) {
     if (el.style.display === 'none' || el.style.visibility === 'hidden') {
+      return false;
+    }
+  }
+
+  // Check style attribute string if present
+  if (typeof el.getAttribute === 'function') {
+    const styleAttr = el.getAttribute('style') || '';
+    if (/display\s*:\s*none/i.test(styleAttr) || /visibility\s*:\s*hidden/i.test(styleAttr)) {
       return false;
     }
   }
@@ -49,11 +57,9 @@ export function isElementVisible(el: Element): boolean {
   if (typeof el.getClientRects === 'function') {
     try {
       const rects = el.getClientRects();
-      if (rects.length === 0) {
-        // If element is detached or has 0 client rects in a real DOM, consider non-visible
-        // Note: In JSDOM / mocked environments getClientRects may return empty, so check parentage
-        if (typeof window !== 'undefined' && 'innerWidth' in window) {
-          // If window has dimensions and rects are 0, it's hidden
+      if (rects && rects.length === 0) {
+        if (typeof window !== 'undefined' && (window.innerWidth > 0 || window.innerHeight > 0)) {
+          return false;
         }
       }
     } catch {
@@ -74,6 +80,7 @@ export function findVisibleMaterialsTable(contentRoot: Element): Element | null 
 
   for (let i = 0; i < tables.length; i++) {
     const table = tables[i];
+    if (!table) continue;
     // Check element visibility
     if (isElementVisible(table)) {
       // Must contain visible thead th and tbody tr
@@ -85,7 +92,7 @@ export function findVisibleMaterialsTable(contentRoot: Element): Element | null 
     }
   }
 
-  if (visibleTables.length === 1) {
+  if (visibleTables.length === 1 && visibleTables[0]) {
     return visibleTables[0];
   }
 
@@ -104,7 +111,7 @@ export function verifyCoursesSelectors(doc: Document): boolean {
   if (!doc) return false;
   try {
     const spaContent = doc.querySelectorAll('#StudentProfilePESUContent');
-    if (spaContent.length !== 1) return false;
+    if (spaContent.length !== 1 || !spaContent[0]) return false;
 
     const contentRoot = spaContent[0];
 
