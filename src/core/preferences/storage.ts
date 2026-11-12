@@ -1,7 +1,8 @@
+import { browser } from 'wxt/browser';
 import {
   DEFAULT_PREFERENCES,
-  UserPreferences,
   UserPreferencesSchema,
+  type UserPreferences,
 } from '../types/preferences';
 
 export const PREFERENCES_STORAGE_KEY = 'mypesu_preferences';
@@ -19,21 +20,12 @@ function resolveStorageArea(customStorage?: StorageArea): StorageArea | null {
   if (customStorage) {
     return customStorage;
   }
-  if (typeof browser !== 'undefined' && browser.storage?.local) {
-    return browser.storage.local;
-  }
-  if (typeof chrome !== 'undefined' && chrome.storage?.local) {
-    // Wrap chrome callback-based or promise-based storage
-    return {
-      get: (keys) =>
-        new Promise((resolve) => {
-          chrome.storage.local.get(keys as any, (items) => resolve(items));
-        }),
-      set: (items) =>
-        new Promise((resolve) => {
-          chrome.storage.local.set(items, () => resolve());
-        }),
-    };
+  try {
+    if (typeof browser !== 'undefined' && browser.storage?.local) {
+      return browser.storage.local;
+    }
+  } catch {
+    // Non-extension environment (e.g. unit tests without injected storage)
   }
   return null;
 }

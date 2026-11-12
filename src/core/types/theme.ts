@@ -1,4 +1,4 @@
-import { ThemeId } from './preferences';
+import type { ThemeId } from './preferences';
 
 export type ColorMode = 'light' | 'dark';
 

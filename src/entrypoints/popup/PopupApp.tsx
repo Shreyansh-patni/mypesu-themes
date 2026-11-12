@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPreferences } from '../../core/preferences/storage';
-import { UserPreferences, DEFAULT_PREFERENCES } from '../../core/types/preferences';
+import { DEFAULT_PREFERENCES, type UserPreferences } from '../../core/types/preferences';
 
 export const PopupApp: React.FC = () => {
   const [preferences, setPreferences] = useState<UserPreferences>(DEFAULT_PREFERENCES);

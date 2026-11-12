@@ -1,4 +1,4 @@
-import { ThemeDefinition } from '../types/theme';
+import type { ThemeDefinition } from '../types/theme';
 
 /**
  * Apple-Inspired Theme Specification

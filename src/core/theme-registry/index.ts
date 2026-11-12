@@ -1,5 +1,5 @@
-import { ThemeId } from '../types/preferences';
-import { ThemeDefinition } from '../types/theme';
+import type { ThemeId } from '../types/preferences';
+import type { ThemeDefinition } from '../types/theme';
 import { AppleInspiredTheme } from './apple-inspired';
 import { MonochromeTheme } from './monochrome';
 
