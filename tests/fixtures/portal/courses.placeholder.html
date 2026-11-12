@@ -2,62 +2,168 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PESU Academy — Course Materials (Synthetic Structural Placeholder)</title>
+  <title>PESU Academy — Verified Course Materials &amp; Syllabi (Synthetic Structural Placeholder)</title>
   <!-- NOTE: Synthetic structural representation for offline adapter testing. Zero real academic or student data. -->
 </head>
 <body>
-  <div class="course-materials-container" id="courses-wrapper">
-    <div class="courses-header">
-      <h1 class="courses-title">Course Materials &amp; Syllabi</h1>
-    </div>
-
-    <!-- Course Selection List -->
-    <div class="course-selector-bar">
-      <select class="form-control course-dropdown" aria-label="Select Course">
-        <option>CS101 — Computer Systems Engineering</option>
-      </select>
-    </div>
-
-    <!-- Unit Accordions / Sections -->
-    <div class="unit-accordion panel-group" id="units-accordion">
-      <div class="unit-panel panel-default">
-        <div class="unit-header panel-heading" role="tab">
-          <h2 class="unit-title">Unit 1: Foundations &amp; Architecture</h2>
+  <!-- Global Shell wrappers -->
+  <nav id="pge_menu">
+    <div class="container-fluid">
+      <header>
+        <div class="navbar-brand">
+          <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>" alt="University Logo" class="university-logo" width="120" height="40">
+          <span class="brand-text">PES UNIVERSITY</span>
         </div>
-        <div class="unit-body panel-collapse in">
-          <!-- Slide / Material Items Table -->
-          <table class="table table-striped materials-table" aria-label="Unit 1 Materials">
-            <thead>
-              <tr>
-                <th scope="col" class="th-title">Topic Title</th>
-                <th scope="col" class="th-type">Type</th>
-                <th scope="col" class="th-date">Uploaded Date</th>
-                <th scope="col" class="th-action">Download</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="slide-row table-row">
-                <td class="td-title">Lecture 01 — System Architecture Overview</td>
-                <td class="td-type"><span class="badge-type">Slide Deck</span></td>
-                <td class="td-date">2026-10-15</td>
-                <td class="td-action">
-                  <button type="button" class="btn btn-sm btn-download">Download</button>
-                </td>
-              </tr>
-              <tr class="slide-row table-row">
-                <td class="td-title">Handout 01 — Reference Material</td>
-                <td class="td-type"><span class="badge-type">PDF Handout</span></td>
-                <td class="td-date">2026-10-18</td>
-                <td class="td-action">
-                  <button type="button" class="btn btn-sm btn-download">Download</button>
-                </td>
-              </tr>
-            </tbody>
+      </header>
+    </div>
+  </nav>
+
+  <div class="content-wrapper" style="display: table; width: 100%;">
+    <div class="menu-left" style="display: table-cell; width: 220px; vertical-align: top;">
+      <ul id="studentProfilePESUHomeMenu" class="sidebar-nav-list">
+        <li class="menu-item">
+          <a href="/Academy/s/studentProfilePESU" class="nav-link">
+            <span class="nav-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="#" class="nav-link">
+            <span class="nav-text">My Courses</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content-right" style="display: table-cell; vertical-align: top;">
+      <div class="content-right-wrapper">
+        <!-- SPA dynamic content root -->
+        <div id="StudentProfilePESUContent">
+
+          <!-- Representative hidden table in DOM (e.g., template/modal/scratchpad) -->
+          <table class="hidden-scratch-table" style="display: none;" aria-hidden="true">
+            <thead><tr><th>Hidden Column</th></tr></thead>
+            <tbody><tr><td>Hidden Cell</td></tr></tbody>
           </table>
+
+          <!-- Course/Material Structural Container -->
+          <div class="course-content-section">
+            <div class="short-title-container">
+              <span class="short-title">CS101: Engineering Systems</span>
+              <span class="short-title">Unit 1 &mdash; Digital Logic Foundations</span>
+            </div>
+
+            <!-- Visible Materials Table -->
+            <table class="table table-striped table-bordered materials-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Topic / Chapter</th>
+                  <th>Unit</th>
+                  <th>Type</th>
+                  <th>Date</th>
+                  <th>Slides</th>
+                  <th>Notes</th>
+                  <th>Recorded Video</th>
+                  <th>Reference</th>
+                  <th>FAQ</th>
+                  <th>Tasks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Safe data rows with protected action cells -->
+                <tr>
+                  <td>1</td>
+                  <td class="topic-cell">Boolean Algebra &amp; Logic Minimization</td>
+                  <td>Unit 1</td>
+                  <td>Lecture Deck</td>
+                  <td>12 Aug 2026</td>
+                  <td class="text-center">
+                    <a href="#action-slides-1" title="Download Presentation">
+                      <span class="pesu-icon-presentation-graphs"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-notes-1" title="Download Document">
+                      <span class="pesu-icon-document"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-video-1" title="Play Video Lecture">
+                      <span class="pesu-icon-play-button"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-ref-1" title="Open Reference Book">
+                      <span class="pesu-icon-open-book"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-faq-1" title="View FAQs">
+                      <span class="pesu-icon-faq"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-tasks-1" title="Task List">
+                      <span class="pesu-icon-list-items"></span>
+                    </a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>2</td>
+                  <td class="topic-cell">Combinational Circuit Design</td>
+                  <td>Unit 1</td>
+                  <td>Handout &amp; Spec</td>
+                  <td>14 Aug 2026</td>
+                  <td class="text-center">
+                    <a href="#action-slides-2" title="Download Presentation">
+                      <span class="pesu-icon-presentation-graphs"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-doc-2" title="Verified Document">
+                      <span class="pesu-icon-doc-tick"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-video-2" title="Play Video Lecture">
+                      <span class="pesu-icon-play-button"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-file-2" title="Generic File">
+                      <span class="pesu-icon-file"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-faq-2" title="View FAQs">
+                      <span class="pesu-icon-faq"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="#action-tasks-2" title="Task List">
+                      <span class="pesu-icon-list-items"></span>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Verified .info-note structure -->
+            <div class="info-note-container">
+              <p class="info-note">Note: Course materials and references are synchronized with syllabus milestones.</p>
+            </div>
+          </div>
+
         </div>
       </div>
+
+      <footer>
+        <div class="footer-content">
+          <span class="copyright-notice">&copy; PES University Portal. All rights reserved.</span>
+        </div>
+      </footer>
     </div>
   </div>
 </body>
 </html>
-

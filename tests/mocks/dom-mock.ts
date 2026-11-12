@@ -376,3 +376,103 @@ export function createMockDashboardDocument(): MockDocument {
 
   return doc;
 }
+
+/**
+ * Creates a structural DOM tree corresponding to the verified portal shell + courses fixture.
+ */
+export function createMockCoursesDocument(): MockDocument {
+  const doc = createMockShellDocument();
+  const spaContent = doc.getElementById('StudentProfilePESUContent');
+  if (!spaContent) return doc;
+
+  // Clear any existing child in spaContent
+  spaContent.children = [];
+
+  // 1. Hidden table representative of unrendered DOM scratchpad
+  const hiddenTable = doc.createElement('table');
+  hiddenTable.setAttribute('class', 'hidden-scratch-table');
+  hiddenTable.style.display = 'none';
+  const hiddenThead = doc.createElement('thead');
+  const hiddenTr = doc.createElement('tr');
+  const hiddenTh = doc.createElement('th');
+  hiddenTr.appendChild(hiddenTh);
+  hiddenThead.appendChild(hiddenTr);
+  hiddenTable.appendChild(hiddenThead);
+  const hiddenTbody = doc.createElement('tbody');
+  const hiddenBodyTr = doc.createElement('tr');
+  const hiddenTd = doc.createElement('td');
+  hiddenBodyTr.appendChild(hiddenTd);
+  hiddenTbody.appendChild(hiddenBodyTr);
+  hiddenTable.appendChild(hiddenTbody);
+  spaContent.appendChild(hiddenTable);
+
+  // 2. Course/Material Structural Container
+  const courseSection = doc.createElement('div');
+  courseSection.setAttribute('class', 'course-content-section');
+
+  const titleContainer = doc.createElement('div');
+  titleContainer.setAttribute('class', 'short-title-container');
+  const shortTitle1 = doc.createElement('span');
+  shortTitle1.setAttribute('class', 'short-title');
+  titleContainer.appendChild(shortTitle1);
+  courseSection.appendChild(titleContainer);
+
+  // 3. Visible Materials Table
+  const table = doc.createElement('table');
+  table.setAttribute('class', 'table table-striped table-bordered materials-table');
+
+  const thead = doc.createElement('thead');
+  const headerRow = doc.createElement('tr');
+  for (let i = 0; i < 11; i++) {
+    const th = doc.createElement('th');
+    headerRow.appendChild(th);
+  }
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  const tbody = doc.createElement('tbody');
+  for (let r = 0; r < 2; r++) {
+    const row = doc.createElement('tr');
+    // Safe text cells
+    for (let c = 0; c < 5; c++) {
+      const td = doc.createElement('td');
+      if (c === 1) td.setAttribute('class', 'topic-cell');
+      row.appendChild(td);
+    }
+    // Protected action cells
+    const actionIcons = [
+      'pesu-icon-presentation-graphs',
+      'pesu-icon-document',
+      'pesu-icon-play-button',
+      'pesu-icon-open-book',
+      'pesu-icon-faq',
+      'pesu-icon-list-items',
+    ];
+    for (const iconCls of actionIcons) {
+      const actionTd = doc.createElement('td');
+      actionTd.setAttribute('class', 'text-center');
+      const a = doc.createElement('a');
+      a.setAttribute('href', '#action-link');
+      const span = doc.createElement('span');
+      span.setAttribute('class', iconCls);
+      a.appendChild(span);
+      actionTd.appendChild(a);
+      row.appendChild(actionTd);
+    }
+    tbody.appendChild(row);
+  }
+  table.appendChild(tbody);
+  courseSection.appendChild(table);
+
+  // 4. Info note
+  const noteContainer = doc.createElement('div');
+  noteContainer.setAttribute('class', 'info-note-container');
+  const note = doc.createElement('p');
+  note.setAttribute('class', 'info-note');
+  noteContainer.appendChild(note);
+  courseSection.appendChild(noteContainer);
+
+  spaContent.appendChild(courseSection);
+
+  return doc;
+}

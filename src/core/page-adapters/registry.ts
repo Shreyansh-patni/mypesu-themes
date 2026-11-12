@@ -2,10 +2,12 @@ import type { PageAdapter } from './types';
 import type { UserPreferences } from '../types/preferences';
 import { ShellAdapter } from './shell.adapter';
 import { DashboardAdapter } from './dashboard.adapter';
+import { CoursesAdapter } from './courses.adapter';
 
 export const REGISTERED_ADAPTERS: readonly PageAdapter[] = Object.freeze([
   ShellAdapter,
   DashboardAdapter,
+  CoursesAdapter,
 ]);
 
 /**
