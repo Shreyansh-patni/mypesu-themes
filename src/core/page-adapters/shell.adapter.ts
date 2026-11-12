@@ -218,3 +218,4 @@ export const ShellAdapter: PageAdapter = {
     this.mount(doc, preferences);
   },
 };
+

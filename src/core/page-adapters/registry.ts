@@ -65,3 +65,4 @@ export function unmountAllAdapters(doc: Document): void {
     adapter.unmount(doc);
   }
 }
+

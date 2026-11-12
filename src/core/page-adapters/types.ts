@@ -38,3 +38,4 @@ export interface PageAdapter {
    */
   update(doc: Document, preferences: UserPreferences): void;
 }
+
