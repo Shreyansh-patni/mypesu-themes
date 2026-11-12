@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { browser } from 'wxt/browser';
 import { getPreferences, savePreferences, PREFERENCES_STORAGE_KEY } from '../core/preferences/storage';
-import { ExtensionUiAppearance, DEFAULT_PREFERENCES } from '../core/types/preferences';
+import { DEFAULT_PREFERENCES, type ExtensionUiAppearance } from '../core/types/preferences';
 
 function getSystemTheme(): 'light' | 'dark' {
   if (typeof window !== 'undefined' && window.matchMedia) {

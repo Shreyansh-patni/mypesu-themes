@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPreferences, resetPreferences } from '../../core/preferences/storage';
-import { UserPreferences, DEFAULT_PREFERENCES, ExtensionUiAppearance } from '../../core/types/preferences';
+import { DEFAULT_PREFERENCES, type UserPreferences, type ExtensionUiAppearance } from '../../core/types/preferences';
 import { useExtensionUiTheme } from '../../hooks/useExtensionUiTheme';
 import {
   Select,
