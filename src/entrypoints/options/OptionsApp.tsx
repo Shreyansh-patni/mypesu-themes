@@ -34,7 +34,15 @@ import type {
 type NavSection = 'overview' | 'themes' | 'appearance' | 'preferences' | 'about';
 
 export const OptionsApp: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<NavSection>('overview');
+  const [activeSection, setActiveSection] = useState<NavSection>(() => {
+    if (typeof window !== 'undefined') {
+      const tab = new URLSearchParams(window.location.search).get('tab');
+      if (tab && ['overview', 'themes', 'appearance', 'preferences', 'about'].includes(tab)) {
+        return tab as NavSection;
+      }
+    }
+    return 'overview';
+  });
   const [isResetDialogOpen, setIsResetDialogOpen] = useState<boolean>(false);
 
   const {

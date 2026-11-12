@@ -66,8 +66,19 @@ export function usePreferences() {
     getPreferences()
       .then((prefs) => {
         if (!mounted) return;
-        setPreferencesState(prefs);
-        syncUiThemeToDom(prefs.extensionUiAppearance);
+        let effectivePrefs = prefs;
+        if (typeof window !== 'undefined') {
+          const urlUi = new URLSearchParams(window.location.search).get('ui');
+          if (urlUi === 'dark' || urlUi === 'light' || urlUi === 'system') {
+            effectivePrefs = { ...prefs, extensionUiAppearance: urlUi };
+          }
+          const urlTheme = new URLSearchParams(window.location.search).get('theme');
+          if (urlTheme === 'monochrome' || urlTheme === 'apple-inspired') {
+            effectivePrefs = { ...effectivePrefs, themeId: urlTheme };
+          }
+        }
+        setPreferencesState(effectivePrefs);
+        syncUiThemeToDom(effectivePrefs.extensionUiAppearance);
         setLoading(false);
       })
       .catch((err) => {
