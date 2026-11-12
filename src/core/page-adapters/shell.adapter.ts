@@ -121,13 +121,15 @@ html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu {
   margin: 0 !important;
 }
 
-html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item {
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item,
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu li {
   background-color: transparent !important;
   border: none !important;
   transition: background-color 0.15s ease-in-out !important;
 }
 
-html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item > a {
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item > a,
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu li > a {
   color: var(--pas-text-muted) !important;
   text-decoration: none !important;
   display: block !important;
@@ -138,18 +140,24 @@ html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item > a {
 }
 
 /* Hover state on inactive navigation items */
-html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item:hover > a {
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item:hover > a,
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu li:hover > a {
   background-color: var(--pas-surface-raised) !important;
   color: var(--pas-text) !important;
 }
 
 /* Active navigation item: strictly neutral monochrome (eliminates native blue active state) */
-html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item.active {
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item.active,
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu li.active,
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .active {
   background-color: var(--pas-surface-raised) !important;
   border-left: 3px solid var(--pas-accent) !important;
 }
 
-html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item.active > a {
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .menu-item.active > a,
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu li.active > a,
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu .active > a,
+html[data-pas-theme="monochrome"] #studentProfilePESUHomeMenu a.active {
   color: var(--pas-text) !important;
   font-weight: 600 !important;
   background-color: transparent !important;
