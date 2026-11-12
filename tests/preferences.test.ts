@@ -56,3 +56,4 @@ describe('UserPreferences Schema & Defaults', () => {
     expect(result.success).toBe(false);
   });
 });
+

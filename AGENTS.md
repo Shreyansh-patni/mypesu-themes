@@ -23,3 +23,4 @@ Before proposing or implementing any changes, agents must consult the following 
 - **Minimal Permissions:** Manifest permissions restricted strictly to `["storage"]` and host match `["https://www.pesuacademy.com/*"]`. Never introduce `tabs`, `cookies`, `scripting`, `webRequest`, or `<all_urls>`.
 - **Safe Fallback:** If preference resolution fails or errors occur, leave the native portal appearance completely unstyled. Never inject partial styles.
 - **Windows Tooling Rule:** Always invoke package managers via `.cmd` (e.g. `pnpm.cmd`, `npm.cmd`).
+

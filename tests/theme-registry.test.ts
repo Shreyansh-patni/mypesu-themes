@@ -76,3 +76,4 @@ describe('Theme Registry & Palette Isolation', () => {
     expect(dark.colors.canvas).toBe('#000000');
   });
 });
+

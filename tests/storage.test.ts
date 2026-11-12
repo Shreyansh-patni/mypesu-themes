@@ -108,3 +108,4 @@ describe('Storage Wrapper (browser.storage.local)', () => {
     expect(verified).toEqual(DEFAULT_PREFERENCES);
   });
 });
+

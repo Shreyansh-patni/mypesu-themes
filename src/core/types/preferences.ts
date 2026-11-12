@@ -40,3 +40,4 @@ export const DEFAULT_PREFERENCES: UserPreferences = Object.freeze({
   fontScale: 100,
   pageOverrides: {},
 });
+
