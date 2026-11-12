@@ -79,17 +79,26 @@
   - Production builds verified for Chrome MV3 (`.output/chrome-mv3`) and Firefox MV3 (`.output/firefox-mv3`).
 * **Gate:** Owner review of `19_STAGE5_UI_FOUNDATION_ADDENDUM_REPORT.md` before proceeding to Stage 6.
 
-### Stage 6 — Integrate: Theme Engine & Core Page Adapters
-* **Status:** **PENDING STAGE 5 APPROVAL & MANUAL SELECTOR VERIFICATION**
-* **Objective:** Wire theme packs to verified portal page adapters.
-* **Prerequisite:** Owner executes manual evidence collection protocol on authorized portal and verifies provisional selectors.
-* **Deliverables:**
-  - Slice 6.1: Monochrome Light & Dark on Global Portal Shell.
+### Stage 6 — Integrate: Extension UI & Portal Page Adapters
+* **Status:** **STAGE 6A COMPLETE / GATED FOR OWNER REVIEW (STAGE 6B PENDING)**
+* **Objective:** Implement production-quality extension UI (Stage 6A) followed by portal DOM page adapters and CSS injection engine (Stage 6B).
+* **Stage 6A Deliverables (Extension UI — COMPLETE):**
+  - Fluid, responsive Browser Action Popup (320px–400px fluid, ~580px max-height) with active theme selection, portal appearance segmented controls, quick readability toggles, and direct Theme Studio shortcut.
+  - Full-screen Theme Studio Options page with Apple-style navigation rail (Overview, Themes, Appearance, Preferences, About).
+  - Two decoupled appearance systems: Extension UI appearance (`extensionUiAppearance`) vs PESU portal appearance (`appearanceMode`).
+  - Active theme selection between Monochrome (12-step grayscale) and Apple-Inspired (Action Blue `#0066cc`, Dark Blue `#2997ff`) with live palette swatches derived directly from canonical theme registries.
+  - Preferences management with Information Density (`comfortable` vs `compact`), bounded Font Scaling (`100%` to `120%`), and factory reset with confirmation dialog.
+  - Official Black & White compass mark integration across Popup, Options rail, and About view.
+  - Reactive cross-context synchronization between Popup and Options via `browser.storage.onChanged`.
+  - Comprehensive unit test suite expanded to 25 tests across 4 test suites; 100% passing.
+  - Production Chrome MV3 and Firefox MV3 builds verified; 5 genuine screenshots captured.
+* **Stage 6B Deliverables (Portal Visual Adapters & CSS Injection — NEXT):**
+  - Prerequisite: Owner executes manual evidence collection protocol on authorized portal and verifies provisional selectors.
+  - Slice 6.1: Monochrome Light & Dark CSS injection on Global Portal Shell.
   - Slice 6.2: In-tab Live Preview, Apply, and Cancel/Revert state machine.
   - Slice 6.3: Apple-Inspired Theme Pack integration with Action Blue (`#0066cc`).
   - Slice 6.4: Student Dashboard and Course Materials page adapters.
-  - Slice 6.5: Text scaling (100%-120%) and density toggles.
-* **Gate:** Every slice passes focused visual and unit test verifications before next slice begins.
+* **Gate:** Owner review of `21_STAGE6A_EXTENSION_UI_REPORT.md` before Stage 6B authorization.
 
 ### Stage 7 — Verify: Independent Test Ladder & Pilot
 * **Status:** **PENDING STAGE 6 APPROVAL**
