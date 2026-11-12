@@ -17,3 +17,4 @@ This directory contains **synthetic, sanitized HTML/DOM fixtures** used for offl
 - `shell.placeholder.html`: Structural template for the Global Navigation Shell (Header, Sidebar, Content Viewport, Footer).
 - `dashboard.placeholder.html`: Structural template for the Student Dashboard (Metric Cards, Announcements, Quick Links).
 - `courses.placeholder.html`: Structural template for Course Materials (Unit Accordions, Topic Listings, Materials Table).
+

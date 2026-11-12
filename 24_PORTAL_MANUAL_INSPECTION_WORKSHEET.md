@@ -220,3 +220,4 @@ Ensure the following elements are explicitly identified so that Page Adapters wi
 1. After completing inspection in Chrome DevTools, record the verified selectors directly into this document.
 2. If providing sanitized structural HTML snippets, ensure **all text is replaced with generic placeholder words** (`Item 1`, `Topic Title`, etc.) and all account IDs/numbers are removed.
 3. Once this worksheet is populated and approved by the owner, Stage 6B Slice 6.1 (Monochrome Shell Adapter) implementation will begin.
+
